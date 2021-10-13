@@ -73,10 +73,10 @@ abstract class ZeemeeHash {
 		// Random permutations
 		for (int i = byteTable.length - 1; i > 0; i--) {
 			int x = (int)(nextUnsigned32() % i);
-	        int temp = byteTable[x];
-	        byteTable[x] = byteTable[i];
-	        byteTable[i] = temp;
-	    }
+	        	int temp = byteTable[x];
+	        	byteTable[x] = byteTable[i];
+	        	byteTable[i] = temp;
+	    	}
 	}
 
 	/**
