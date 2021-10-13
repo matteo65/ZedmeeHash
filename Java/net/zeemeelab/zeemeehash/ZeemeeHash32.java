@@ -64,11 +64,11 @@ public class ZeemeeHash32 extends ZeemeeHash {
 			b3 = byteTable[data[pos + 2] & 0xff];
 			return (byteTable[b3 ^ b2 ^ b1] << 24) | (b3 << 16) | ((b1 ^ b3) << 8) | (b2 ^ b3);
 		
-    	default:
-    		b4 = byteTable[data[pos] & 0xff];
-    		b3 = byteTable[data[pos + 1] & 0xff];
-    		b2 = byteTable[data[pos + 2] & 0xff];
-    		b1 = byteTable[data[pos + 3] & 0xff];
+    		default:
+    			b4 = byteTable[data[pos] & 0xff];
+    			b3 = byteTable[data[pos + 1] & 0xff];
+    			b2 = byteTable[data[pos + 2] & 0xff];
+    			b1 = byteTable[data[pos + 3] & 0xff];
 		}
 		
 		int h = (length < 6) ? 2 : 0;
