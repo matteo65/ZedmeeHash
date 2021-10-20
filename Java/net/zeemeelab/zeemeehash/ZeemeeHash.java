@@ -23,6 +23,7 @@ package net.zeemeelab.zeemeehash;
 abstract class ZeemeeHash {
 	
 	protected final int[] byteTable = new int[256];
+	protected final int byteTable0;
 	
 	// Used by lfsr113 pseudo random number generator
 	// Author: Pierre L'Ecuyer
@@ -32,10 +33,12 @@ abstract class ZeemeeHash {
 	
 	public ZeemeeHash(int seed1, int seed2, int seed3, int seed4) {
 		genByteTable(seed1, seed2, seed3, seed4);
+		byteTable0 = byteTable[0];
 	}
 	
 	public ZeemeeHash(int seed) {
 		genByteTable(seed, seed, seed, seed);
+		byteTable0 = byteTable[0];
 	}
 	
 	private void genByteTable(int seed1, int seed2, int seed3, int seed4) {
