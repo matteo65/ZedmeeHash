@@ -43,55 +43,51 @@ public class ZeemeeHash32 extends ZeemeeHash {
 	 * @return hash value
 	 */
 	public int hash(final byte[] data, int pos, int length) {
-		int b4, b3, b2, b1;
+		int b1, b2, b3, b4;
 		
 		switch(length) {
 		case 1:
-			b1 = byteTable[data[pos] & 0xff];
-			b2 = byteTable[b1];
-			b3 = byteTable[b2];
-			return (byteTable[b3] << 24) | (b3 << 16) | (b2 << 8) | b1;
+			b1 = b2 = b3 = byteTable0;
+			b4 = byteTable[data[pos] & 0xff];
+			break;
 			
 		case 2:
-			b1 = byteTable[data[pos] & 0xff];
-			b2 = byteTable[data[pos + 1] & 0xff];
-			b3 = byteTable[(b1 ^ b2) & 0xff];
-			return (byteTable[b3] << 24) | (b3 << 16) | (b2 << 8) | (b1 ^ b2);
+			b1 = b2 = byteTable0;
+			b3 = byteTable[data[pos] & 0xff];
+			b4 = byteTable[data[pos + 1] & 0xff];
+			break;
 			
 		case 3:
-			b1 = byteTable[data[pos] & 0xff];
-			b2 = byteTable[data[pos + 1] & 0xff];
-			b3 = byteTable[data[pos + 2] & 0xff];
-			return (byteTable[b3 ^ b2 ^ b1] << 24) | (b3 << 16) | ((b1 ^ b3) << 8) | (b2 ^ b3);
-		
-    		default:
-    			b4 = byteTable[data[pos] & 0xff];
-    			b3 = byteTable[data[pos + 1] & 0xff];
-    			b2 = byteTable[data[pos + 2] & 0xff];
-    			b1 = byteTable[data[pos + 3] & 0xff];
-		}
-		
-		int h = (length < 6) ? 2 : 0;
+			b1 = byteTable0;
+			b2 = byteTable[data[pos] & 0xff];
+			b3 = byteTable[data[pos + 1] & 0xff];
+			b4 = byteTable[data[pos + 2] & 0xff];
+			break;
 			
-		do {
-			b4 = byteTable[b4 ^ b3];			
-			b3 = byteTable[b3 ^ b2];
-			b2 = byteTable[b2 ^ b1];
-			b1 = byteTable[b1 ^ b4];		
+		default:
+			b1 = byteTable[data[pos++] & 0xff];
+			b2 = byteTable[data[pos++] & 0xff];
+			b3 = byteTable[data[pos++] & 0xff];
+			b4 = byteTable[data[pos++] & 0xff];
 		}
-		while(h-- != 0);
+
+		b1 = byteTable[b1 ^ b4];
+		b2 = byteTable[b2 ^ b1];
+		b3 = byteTable[b3 ^ b2];
+		b4 = byteTable[b4 ^ b3];
 		
-		h = (b4 << 24) | (b3 << 16) | (b2 << 8) | b1;
+		int x = b2 ^ b1;
+		int y = b4 ^ b3;
+		int h = ((b3 ^ x) << 24) | ((b4 ^ x) << 16) | ((y ^ b1) << 8) | (y ^ b2);
 		
 		if(length > 4) {
-			length = pos + length;
-			pos += 4;
-			do {
-				h = 134775813 * h + data[pos++];
-			}
-			while(pos < length);
+			length = pos + length - 4;
+    			do {
+    				h = h * 134775813 + data[pos++];
+    			}
+    			while(pos < length);
 		}
-		return h; 
+		return h;
 	}
 	
 	public int hash(final byte[] data, int length) {
