@@ -28,7 +28,6 @@ public class ZeemeeHash32 extends ZeemeeHash {
 	
 	public static final int DEFAULT_SEED = ASCII_ALPHANUM_SEED; 
 
-
 	public ZeemeeHash32(int seed1, int seed2, int seed3, int seed4) {
 		super(seed1, seed2, seed3, seed4);
 	}
