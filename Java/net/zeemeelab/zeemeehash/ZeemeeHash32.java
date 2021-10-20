@@ -21,7 +21,13 @@ package net.zeemeelab.zeemeehash;
  */
 public class ZeemeeHash32 extends ZeemeeHash {
 	
-	public static final int DEFAULT_SEED = 1165170637;
+	public static final int ASCII_ALPHANUM_SEED = 0x189DDD86; 
+	public static final int ASCII_LANGUAGE_WORDS_SEED = 0x9D00256A; 
+	public static final int ASCII_PRINTABLE_SEED = 0xFDC40804; 
+	public static final int ASCII_DIGIT_SEED = 0x2F422C8D; 
+	
+	public static final int DEFAULT_SEED = ASCII_ALPHANUM_SEED; 
+
 
 	public ZeemeeHash32(int seed1, int seed2, int seed3, int seed4) {
 		super(seed1, seed2, seed3, seed4);
