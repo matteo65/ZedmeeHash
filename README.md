@@ -15,21 +15,17 @@ If the input values are composed of bytes of a narrow range of values, for examp
 you can further reduce collisions by choosing a suitable seed.  
 If, on the other hand, the input values are absolutely random, the number of collisions is almost independent of the chosen seed.  
 
-#### Table of collisions data input [1-4] bytes 32-bit hash functions  
+#### 32-bit hash functions number of collisions for data input [1-4] bytes   
 
 Data input                                                                        |Hashes    | Zeemee   | Murmur3 | XX  | Rabin  
 ----------------------------------------------------------------------------------|----------|----------|---------|-----|--------
-4 byte length values 00000000-FFFFFFFF                                            |4294967296|        0 |      0  |  0  |   ?    
-1 byte 00-FF, 2 bytes 0100-FFFF, 3 bytes 010000-FFFFFF, 4 bytes 01000000-FFFFFFFF |4294967296|        0 |       ? |   ? |    ?   
-1 byte 00-FF, 2 bytes 0000-FFFF, 3 bytes 000000-FFFFFF, 4 bytes 00000000-FFFFFFFF |4311810304|  16843008|      ?  |   ? |     ?  
+4 byte length values 00000000-FFFFFFFF                                            |4294967296|        0 |      0  |  ?  |   ?    
+1 byte 00-FF, 2 bytes 0100-FFFF, 3 bytes 010000-FFFFFF, 4 bytes 01000000-FFFFFFFF |4294967296|        0 |16777215 |   ? |    ?   
+1 byte 00-FF, 2 bytes 0000-FFFF, 3 bytes 000000-FFFFFF, 4 bytes 00000000-FFFFFFFF |4311810304|  16843008|16843008 |   ? |     ?  
 
 
-
-First Header | Second Header
------------- | -------------
-Content from cell 1 | Content from cell 2
-Content in the first column | Content in the second column
-
+## Vulnerability
+Zeemee like most non-cryptographic functions is not secure because it is not specifically designed to be difficult to reverse by an adversary, making it unsuitable for cryptographic purposes. Its use is instead recommended in all other contexts where hash functions are used  
 
 ## Portability
 It is simple, straightforward and can be easily written in virtually any programming language; returns different hash values
