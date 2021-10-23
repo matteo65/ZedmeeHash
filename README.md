@@ -30,7 +30,7 @@ Data input                                                                      
 
 Data input                                                                  |#Hashes   | Zeemee   | Murmur | XX | Rabin
 ----------------------------------------------------------------------------|----------|----------|--------|----|-------
-Numbers as strings from "0" to "999999999"                                  |1000000000| 106488311|107822463|    |365950432
+Numbers as strings from "0" to "999999999"                                  |1000000000| 106488311|107822463|110287893|365950432
 
 ## Vulnerability
 Zeemee, like most non-cryptographic functions, is not secure because it is not specifically designed to be difficult to reverse by an adversary, making it unsuitable for cryptographic purposes. Its use is instead recommended in all other contexts where hash functions are used.  
