@@ -8,7 +8,7 @@ The result is a very strong, fast and simple function with average performance s
 Zeemee has an absolutely uniform, chaotic distribution of hash values independent of the number, length and type of input values.
 Even minimal differences (1 bit) in the input values produce very different hash values.  
 
-![Optional Text](../master/Resource/zmh_distributions.png)
+![Alt Text](https://raw.githubusercontent.com/matteo65/ZeemeeHash/main/Resource/zmh_distributions.png)
 
 ## Minimum number of collisions for a set of reasonably large input values
 For all possible input values not exceeding 4 bytes for the 32-bit version (8 bytes for the 64-bit version)  
