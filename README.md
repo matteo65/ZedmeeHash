@@ -15,6 +15,15 @@ If the input values are composed of bytes of a narrow range of values, for examp
 you can further reduce collisions by choosing a suitable seed.  
 If, on the other hand, the input values are absolutely random, the number of collisions is almost independent of the chosen seed.  
 
+Table of collisions data input [1-4] bytes input for 32-bit hash  
+
+Data input 4                        | Zeemee | Murmur3 | XX  | Rabin
+--------------------------------------------------------------------
+4-byte all values 00000000-FFFFFFFF|      0 |      0  |  0  |   ?
+--------------------------------------------------------------------
+
+
+
 ## Portability
 It is simple, straightforward and can be easily written in virtually any programming language; returns different hash values
 on Little Endian or Big Endian architectures, but the quality is identical.  
