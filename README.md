@@ -17,11 +17,16 @@ If, on the other hand, the input values are absolutely random, the number of col
 
 Table of collisions data input [1-4] bytes input for 32-bit hash  
 
-Data input 4                        | Zeemee | Murmur3 | XX  | Rabin
---------------------------------------------------------------------
-4-byte all values 00000000-FFFFFFFF|      0 |      0  |  0  |   ?
---------------------------------------------------------------------
+Data input 4                       | Zeemee | Murmur3 | XX  | Rabin
+-----------------------------------|--------------------------------
+4 byte length values 00000000-FFFFFFFF|      0 |      0  |  0  |   ?
+1 byte 00-FF, 2 bytes 0100-FFFF, 3 bytes 010000-FFFFFF, 4 bytes 01000000-FFFFFFFF||||
 
+
+First Header | Second Header
+------------ | -------------
+Content from cell 1 | Content from cell 2
+Content in the first column | Content in the second column
 
 
 ## Portability
