@@ -24,6 +24,11 @@ Data input                                                                      
 1 byte 00-FF, 2 bytes 0000-FFFF, 3 bytes 000000-FFFFFF, 4 bytes 00000000-FFFFFFFF |4311810304|  16843008|16843008 |16843008|16843008
 5 byte length values 0000000000-FFFFFFFFFF                                        |?|        ? |      ?  |  ?  |   ?    
 
+#### 32-bit hash functions: number of collision for strings
+
+Data input                                                                  |#Hashes   | Zeemee   | Murmur | XX | Rabin
+----------------------------------------------------------------------------|----------|----------|--------|----|-------
+Numbers as strings from "0" to "999999999"                                  |1000000000| 106488311|        |    |365950432
 
 ## Vulnerability
 Zeemee, like most non-cryptographic functions, is not secure because it is not specifically designed to be difficult to reverse by an adversary, making it unsuitable for cryptographic purposes. Its use is instead recommended in all other contexts where hash functions are used.  
