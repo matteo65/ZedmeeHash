@@ -15,7 +15,7 @@ If the input values are composed of bytes of a narrow range of values, for examp
 you can further reduce collisions by choosing a suitable seed.  
 If, on the other hand, the input values are absolutely random, the number of collisions is almost independent of the chosen seed.  
 
-## Table of collisions data input [1-4] bytes 32-bit hash functions  
+#### Table of collisions data input [1-4] bytes 32-bit hash functions  
 
 Data input                                                                        |Hashes    | Zeemee   | Murmur3 | XX  | Rabin  
 ----------------------------------------------------------------------------------|----------|----------|---------|-----|--------
