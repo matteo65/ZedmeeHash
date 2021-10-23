@@ -14,3 +14,7 @@ zeemee returns a unique hash with always 0 collisions. For longer input lengths 
 If the input values are composed of bytes of a narrow range of values, for example only alphanumeric or ASCII printable characters,  
 you can further reduce collisions by choosing a suitable seed.  
 If, on the other hand, the input values are absolutely random, the number of collisions is almost independent of the chosen seed.  
+
+## Portability
+It is simple, straightforward and can be easily written in virtually any programming language; returns different hash values
+on Little Endian or Big Endian architectures, but the quality is identical.  
