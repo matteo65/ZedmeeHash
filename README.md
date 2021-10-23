@@ -20,7 +20,7 @@ If, on the other hand, the input values are absolutely random, the number of col
 Data input                                                                        |#Hashes   | Zeemee   | Murmur3 | XX  | Rabin  
 ----------------------------------------------------------------------------------|----------|----------|---------|-----|--------
 4 byte length values 00000000-FFFFFFFF                                            |4294967296|        0 |      0  |  ?  |   ?    
-1 byte 00-FF, 2 bytes 0100-FFFF, 3 bytes 010000-FFFFFF, 4 bytes 01000000-FFFFFFFF |4294967296|        0 |16777215 |   ? |    ?   
+1 byte 00-FF, 2 bytes 0100-FFFF, 3 bytes 010000-FFFFFF, 4 bytes 01000000-FFFFFFFF |4294967296|        0 |16711866 |   ? |    ?   
 1 byte 00-FF, 2 bytes 0000-FFFF, 3 bytes 000000-FFFFFF, 4 bytes 00000000-FFFFFFFF |4311810304|  16843008|16843008 |   ? |     ?  
 
 
