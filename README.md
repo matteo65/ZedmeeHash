@@ -17,7 +17,7 @@ If, on the other hand, the input values are absolutely random, the number of col
 
 #### 32-bit hash functions number of collisions for data input [1-4] bytes   
 
-Data input                                                                        |Hashes    | Zeemee   | Murmur3 | XX  | Rabin  
+Data input                                                                        |#Hashes   | Zeemee   | Murmur3 | XX  | Rabin  
 ----------------------------------------------------------------------------------|----------|----------|---------|-----|--------
 4 byte length values 00000000-FFFFFFFF                                            |4294967296|        0 |      0  |  ?  |   ?    
 1 byte 00-FF, 2 bytes 0100-FFFF, 3 bytes 010000-FFFFFF, 4 bytes 01000000-FFFFFFFF |4294967296|        0 |16777215 |   ? |    ?   
@@ -25,7 +25,8 @@ Data input                                                                      
 
 
 ## Vulnerability
-Zeemee like most non-cryptographic functions is not secure because it is not specifically designed to be difficult to reverse by an adversary, making it unsuitable for cryptographic purposes. Its use is instead recommended in all other contexts where hash functions are used  
+Zeemee, like most non-cryptographic functions, is not secure because it is not specifically designed to be difficult to reverse by an adversary, making it unsuitable for cryptographic purposes. Its use is instead recommended in all other contexts where hash functions are used.  
+However, since it uses 6 seed of 32-bit values (used once in the initialization or instantiation), its security is given by the secrecy of these 6 seeds, the combination of which is 192 bits which make zeemee certainly less vulnerable than all the other non-cryptographic functions.   
 
 ## Portability
 It is simple, straightforward and can be easily written in virtually any programming language; returns different hash values
