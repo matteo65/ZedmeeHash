@@ -26,7 +26,7 @@ Data input                                                                      
 1 byte 00-FF, 2 bytes 0000-FFFF, 3 bytes 000000-FFFFFF, 4 bytes 00000000-FFFFFFFF |4311810304|  16843008|16843008 |16843008|16843008
 5 byte length values 0000000000-FFFFFFFFFF                                        |?|        ? |      ?  |  ?  |   ?    
 
-#### 32-bit hash functions: number of collision for strings
+#### 32-bit hash functions: number of collision for strings (ASCII 1 byte per char)
 
 Data input                                                  |#Hashes   | Zeemee   | Murmur | XX | Rabin
 ------------------------------------------------------------|----------|----------|--------|----|-------
