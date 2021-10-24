@@ -31,13 +31,13 @@ Data input                                                                      
 Data input                                                  |#Hashes   | Zeemee   | Murmur | XX | Rabin
 ------------------------------------------------------------|----------|----------|--------|----|-------
 Numbers as strings from "0" to "999999999"                  |1000000000| 106488311|107822463|110287893|365950432
-File Resource/words_en.txt                                  | 65503    |         0|        ?|     ?   | ?
-File Resource/words_es.txt                                  | 74571    |         0|        ?|     ?   | ?
-File Resource/words_it.txt                                  |117558    |         0|        ?|     ?   | ?
-File Resource/words_latin.txt                               | 80007    |         0|        ?|     ?   | ?
-File Resource/words_en_es_it_latin.txt                      |315198    |         4|        ?|     ?   | ?
-File Resource/words_and_numbers.txt                         |429187    |         4|        ?|     ?   | ?
-File Resource/first_million_primes.txt                      |1000000   |       104|        ?|     ?   | ?
+File Resource/words_en.txt                                  | 65503    |         0|        0|     0   | 14
+File Resource/words_es.txt                                  | 74571    |         0|        2|     0   | 38
+File Resource/words_it.txt                                  |117558    |         0|        0|     2   | 28
+File Resource/words_latin.txt                               | 80007    |         0|        1|     1   | 34
+File Resource/words_en_es_it_latin.txt                      |315198    |         4|        9|     9   | 271
+File Resource/words_and_numbers.txt                         |429187    |         4|       20|    19   | 251
+File Resource/first_million_primes.txt                      |1000000   |       104|      118|    85   | 0
 
 ## Vulnerability
 Zeemee, like most non-cryptographic functions, is not secure because it is not specifically designed to be difficult to reverse by an adversary, making it unsuitable for cryptographic purposes. Its use is instead recommended in all other contexts where hash functions are used.  
