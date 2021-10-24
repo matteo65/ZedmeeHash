@@ -38,6 +38,7 @@ File Resource/words_latin.txt                               | 80007    |        
 File Resource/words_en_es_it_latin.txt                      |315198    |         4|        9|     9   | 271
 File Resource/words_and_numbers.txt                         |429187    |         4|       20|    19   | 251
 File Resource/first_million_primes.txt                      |1000000   |       104|      118|    85   | 0
+File Resource/random_64bit_signed_numbers.txt               |1000000   |       105|      110|    143  | 122
 
 ## Vulnerability
 Zeemee, like most non-cryptographic functions, is not secure because it is not specifically designed to be difficult to reverse by an adversary, making it unsuitable for cryptographic purposes. Its use is instead recommended in all other contexts where hash functions are used.  
