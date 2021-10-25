@@ -28,7 +28,7 @@ Data input                                                                      
 
 #### 32-bit hash functions: number of collision for strings (ASCII 1 byte per char)
 
-Data input                                                  |#Hashes   | Zeemee   | Murmur | XX | Rabin
+Data input                                                  |#Hashes   | Zeemee   | Murmur3| XX | Rabin
 ------------------------------------------------------------|----------|----------|--------|----|-------
 Numbers as strings from "0" to "999999999"                  |1000000000| 106488311|107822463|110287893|365950432
 File Resource words_en.txt                                  | 65503    |         0|        0|     0   | 14
