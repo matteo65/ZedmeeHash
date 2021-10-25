@@ -21,24 +21,24 @@ If, on the other hand, the input values are absolutely random, the number of col
 
 Data input                                                                        |#Hashes   | Zeemee   | Murmur3 | XX  | Rabin  
 ----------------------------------------------------------------------------------|----------|----------|---------|-----|--------
-4 byte length values 00000000-FFFFFFFF                                            |4294967296|   **0**  |  **0**  |**0**| **0**    
-1 byte 00-FF, 2 bytes 0100-FFFF, 3 bytes 010000-FFFFFF, 4 bytes 01000000-FFFFFFFF |4294967296|   **0**  |16711655 |16711713|16777216   
-1 byte 00-FF, 2 bytes 0000-FFFF, 3 bytes 000000-FFFFFF, 4 bytes 00000000-FFFFFFFF |4311810304|**16843008**|16843008 |16843008|16843008
+4 byte length values 00000000-FFFFFFFF                                            |4294967296|   0      |      0  |  0  |  0    
+1 byte 00-FF, 2 bytes 0100-FFFF, 3 bytes 010000-FFFFFF, 4 bytes 01000000-FFFFFFFF |4294967296|   0      |16711655 |16711713|16777216   
+1 byte 00-FF, 2 bytes 0000-FFFF, 3 bytes 000000-FFFFFF, 4 bytes 00000000-FFFFFFFF |4311810304|  16843008|16843008 |16843008|16843008
 5 byte length values 0000000000-FFFFFFFFFF                                        |?|        ? |      ?  |  ?  |   ?    
 
 #### 32-bit hash functions: number of collision for strings (ASCII 1 byte per char)
 
 Data input                                                  |#Hashes   | Zeemee   | Murmur3| XX | Rabin
 ------------------------------------------------------------|----------|----------|--------|----|-------
-Numbers as strings from "0" to "999999999"                  |1000000000| **106488311**|107822463|110287893|365950432
-File Resource words_en.txt                                  | 65503    |    **0** |   **0** |  **0**   | 14
-File Resource words_es.txt                                  | 74571    |    **0** |        2|  **0**   | 38
-File Resource words_it.txt                                  |117558    |    **0** |    **0**|     2   | 28
-File Resource words_latin.txt                               | 80007    |    **0** |        1|     1   | 34
-File Resource words_en_es_it_latin.txt                      |315198    |    **4** |        9|     9   | 271
-File Resource words_and_numbers.txt                         |429187    |    **4** |       20|    19   | 251
-File Resource first_million_primes.txt                      |1000000   |       104|      118|    85   |**0**
-File Resource random_64bit_signed_numbers.txt               |1000000   |   **105**|      110|    143  | 122
+Numbers as strings from "0" to "999999999"                  |1000000000| 106488311|107822463|110287893|365950432
+File Resource words_en.txt                                  | 65503    |    0     |   0     |    0    | 14
+File Resource words_es.txt                                  | 74571    |    0     |        2|    0    | 38
+File Resource words_it.txt                                  |117558    |    0     |    0    |     2   | 28
+File Resource words_latin.txt                               | 80007    |    0     |        1|     1   | 34
+File Resource words_en_es_it_latin.txt                      |315198    |    4     |        9|     9   | 271
+File Resource words_and_numbers.txt                         |429187    |    4     |       20|    19   | 251
+File Resource first_million_primes.txt                      |1000000   |     104  |      118|    85   |  0
+File Resource random_64bit_signed_numbers.txt               |1000000   |     105  |      110|    143  | 122
 
 ## Vulnerability
 Zeemee, like most non-cryptographic functions, is not secure because it is not specifically designed to be difficult to reverse by an adversary, making it unsuitable for cryptographic purposes. Its use is instead recommended in all other contexts where hash functions are used.  
