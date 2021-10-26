@@ -42,10 +42,10 @@ File Resource random_64bit_signed_numbers.txt               |1000000   |     124
 
 #### 32-bit hash functions: number of collisions for data input from [15-40] bytes
 
-Data input                                                            | #Hashes  | Zeemee   | Murmur3|    XX   | Rabin
-----------------------------------------------------------------------|----------|----------|--------|---------|-------
-Number as strings from "1234567890123456789" to "1234567890223456789" |100000000 | 940512   | 1155789|  808693 | 0      
-
+Data input                                                                             | #Hashes  | Zeemee   | Murmur3|    XX   | Rabin
+---------------------------------------------------------------------------------------|----------|----------|--------|---------|-------
+Number as strings from "1234567890123456789" to "1234567890223456789"                  |100000000 | 940512   | 1155789|  808693 | 0      
+Strings from "abcdefg1234567890123456789hijklmn" to "abcdefg1234567890223456789hijklmn"|100000000 |   0      | 1152600| 1037151 | 0   
 
 ## Vulnerability
 Zeemee, like most non-cryptographic functions, is not secure because it is not specifically designed to be difficult to reverse by an adversary, making it unsuitable for cryptographic purposes. Its use is instead recommended in all other contexts where hash functions are used.  
