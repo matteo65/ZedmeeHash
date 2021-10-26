@@ -45,9 +45,10 @@ File Resource random_64bit_signed_numbers.txt               |1000000   |     124
 Data input                                                                             | #Hashes  | Zeemee   | Murmur3|    XX   | Rabin
 ---------------------------------------------------------------------------------------|----------|----------|--------|---------|-------
 Number as strings from "1234567890123456789" to "1234567890223456789"                  |100000000 | 940512   | 1155789|  808693 | 0      
-Strings from "abcdefg1234567890123456789hijklmn" to "abcdefg1234567890223456789hijklmn"|100000000 |   0      | 1152600| 1037151 | 0  
-24 bytes [b,b,b,b,b,b], b from 00000000 to 05F5E0FF                                    |100000000 | 1155320  |1154653 | 1411483 | 0
-24 bytes [b,b\*3,b\*5,b\*7,b\*11,b\*13], b from 00000000 to 05F5E0FF                   |100000000 | 1155115  |1154542 | 1160003 | 1150862
+Strings from "abcdefg1234567890123456789hijklmn" to "abcdefg1234567890223456789hijklmn"|100000000 | 1080583  | 1152600| 1037151 | 0  
+Binary 24 bytes [b,b,b,b,b,b], b from 00000000 to 05F5E0FF                             |100000000 | 1155320  |1154653 | 1411483 | 0
+Binary 24 bytes [b,b\*3,b\*5,b\*7,b\*11,b\*13], b from 00000000 to 05F5E0FF            |100000000 | 1155115  |1154542 | 1160003 | 1150862
+Strings 48 length "XXXXXX" X from "00000000" to "05F5E0FF"                             |100000000 | 70454096 |
 
 
 ## Vulnerability
