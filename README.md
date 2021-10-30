@@ -13,7 +13,7 @@ Even minimal differences (1 bit) in the input values produce very different hash
 
 ## Minimum number of collisions for a set of reasonably large input values
 For all possible input values not exceeding 4 bytes for the 32-bit version (8 bytes for the 64-bit version)  
-zeemee returns a unique hash with always 0 collisions. For longer input lengths the number of collisions is always very low.  
+zedmee returns a unique hash with always 0 collisions. For longer input lengths the number of collisions is always very low.  
 If the input values are composed of bytes of a narrow range of values, for example only alphanumeric or ASCII printable characters,
 you can further reduce collisions by choosing a suitable seed.  
 If, on the other hand, the input values are absolutely random, the number of collisions is almost independent of the chosen seed.  
