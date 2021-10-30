@@ -22,34 +22,34 @@ If, on the other hand, the input values are absolutely random, the number of col
 
 Data input                                                                        |#Hashes   | Zedmee   | Murmur3 | XX  | Rabin  
 ----------------------------------------------------------------------------------|----------|----------|---------|-----|--------
-4 byte length values 00000000-FFFFFFFF                                            |4294967296|   0      |      0  |  0  |  0    
-1 byte 00-FF, 2 bytes 0100-FFFF, 3 bytes 010000-FFFFFF, 4 bytes 01000000-FFFFFFFF |4294967296|   0      |16711655 |16711713|16777216   
-1 byte 00-FF, 2 bytes 0000-FFFF, 3 bytes 000000-FFFFFF, 4 bytes 00000000-FFFFFFFF |4311810304|  16843008|16843008 |16843008|16843008
+4 byte length values 00000000-FFFFFFFF                                            |4,294,967,296|   0      |      0  |  0  |  0    
+1 byte 00-FF, 2 bytes 0100-FFFF, 3 bytes 010000-FFFFFF, 4 bytes 01000000-FFFFFFFF |4,294,967,296|   0      |16,711,655 |16,711,713|16,777,216   
+1 byte 00-FF, 2 bytes 0000-FFFF, 3 bytes 000000-FFFFFF, 4 bytes 00000000-FFFFFFFF |4,311,810,304|  16,843,008|16,843,008 |16,843,008|16,843,008
 5 byte length values 0000000000-FFFFFFFFFF                                        |?|        ? |      ?  |  ?  |   ?    
 
 #### 32-bit hash functions: number of collisions for strings (ASCII 1 byte per char)
 
 Data input                                                  |#Hashes   | Zedmee   | Murmur3 |    XX   |  Rabin
 ------------------------------------------------------------|----------|----------|---------|---------|---------
-Numbers as strings from "0" to "999999999"                  |1000000000| 108395514|107822463|110287893|365950432
-File Resource words_en.txt                                  | 65503    |         0|        0|        0|       14
-File Resource words_es.txt                                  | 74571    |         0|        2|        0|       38
-File Resource words_it.txt                                  |117558    |         0|        0|        2|       28
-File Resource words_latin.txt                               | 80007    |         0|        1|        1|       34
-File Resource words_en_es_it_latin.txt                      |315198    |         6|        9|        9|      271
-File Resource words_and_numbers.txt                         |429187    |         9|       20|       19|      251
-File Resource first_million_primes.txt                      |1000000   |       104|      118|       85|        0
-File Resource random_64bit_signed_numbers.txt               |1000000   |       119|      110|      143|      122
+Numbers as strings from "0" to "999999999"                  |1,000,000,000| 108,438,583|107,822,463|110,287,893|365,950,432
+File Resource words_en.txt                                  | 65,503    |         0|        0|        0|       14
+File Resource words_es.txt                                  | 74,571    |         0|        2|        0|       38
+File Resource words_it.txt                                  |117,558    |         0|        0|        2|       28
+File Resource words_latin.txt                               | 80,007    |         1|        1|        1|       34
+File Resource words_en_es_it_latin.txt                      |315,198    |         5|        9|        9|      271
+File Resource words_and_numbers.txt                         |429,187    |         7|       20|       19|      251
+File Resource first_million_primes.txt                      |1,000,000   |       112|      118|       85|        0
+File Resource random_64bit_signed_numbers.txt               |1,000,000   |       119|      110|      143|      122
 
 #### 32-bit hash functions: number of collisions for data input from [15-40] bytes
 
-Data input                                                                             | #Hashes  | Zedmee   | Murmur3|    XX   | Rabin
----------------------------------------------------------------------------------------|----------|----------|--------|---------|-------
-Number as strings from "1234567890123456789" to "1234567890223456789"                  |100000000 | 940512   | 1155789|  808693 | 0      
-Strings from "abcdefg1234567890123456789hijklmn" to "abcdefg1234567890223456789hijklmn"|100000000 | 1080583  | 1152600| 1037151 | 0  
-Binary 24 bytes [b,b,b,b,b,b], b from 00000000 to 05F5E0FF                             |100000000 | 1155320  |1154653 | 1411483 | 0
-Binary 24 bytes [b,b\*3,b\*5,b\*7,b\*11,b\*13], b from 00000000 to 05F5E0FF            |100000000 | 1155115  |1154542 | 1160003 | 1150862
-Strings 48 length "XXXXXX" X from "00000000" to "05F5E0FF"                             |100000000 | 70454096 |
+Data input                                                                             | #Hashes  | Zedmee   | Murmur3|    XX  | Rabin
+---------------------------------------------------------------------------------------|----------|----------|--------|--------|-------
+Number as strings from "1234567890123456789" to "1234567890223456789"                  |100,000,000 | 1171232  | 1155789|  808693|      0      
+Strings from "abcdefg1234567890123456789hijklmn" to "abcdefg1234567890223456789hijklmn"|100,000,000 | 1162066  | 1152600| 1037151|      0  
+Binary 24 bytes [b,b,b,b,b,b], b from 00000000 to 05F5E0FF                             |100,000,000 | 1157560  | 1154653| 1411483|      0
+Binary 24 bytes [b,b\*3,b\*5,b\*7,b\*11,b\*13], b from 00000000 to 05F5E0FF            |100,000,000 | 1154457  | 1154542| 1160003| 1150862
+Strings 48 length "ssssss" s from "00000000" to "05F5E0FF"                             |100,000,000 | 70454096 |
 
 
 ## Vulnerability
