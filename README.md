@@ -31,7 +31,7 @@ Data input                                                                      
 
 Data input                                                  |#Hashes   | Zedmee   | Murmur3 |    XX   |  Rabin
 ------------------------------------------------------------|----------|----------|---------|---------|---------
-Numbers as strings from "0" to "999999999"                  |1000000000| 106488311|107822463|110287893|365950432
+Numbers as strings from "0" to "999999999"                  |1000000000| 108395514|107822463|110287893|365950432
 File Resource words_en.txt                                  | 65503    |         0|        0|        0|       14
 File Resource words_es.txt                                  | 74571    |         0|        2|        0|       38
 File Resource words_it.txt                                  |117558    |         0|        0|        2|       28
