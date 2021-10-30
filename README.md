@@ -29,17 +29,17 @@ Data input                                                                      
 
 #### 32-bit hash functions: number of collisions for strings (ASCII 1 byte per char)
 
-Data input                                                  |#Hashes   | Zedmee   | Murmur3|    XX    | Rabin
-------------------------------------------------------------|----------|----------|--------|----------|-------
+Data input                                                  |#Hashes   | Zedmee   | Murmur3 |    XX   |  Rabin
+------------------------------------------------------------|----------|----------|---------|---------|---------
 Numbers as strings from "0" to "999999999"                  |1000000000| 106488311|107822463|110287893|365950432
-File Resource words_en.txt                                  | 65503    |    0     |   0     |    0    | 14
-File Resource words_es.txt                                  | 74571    |    0     |        2|    0    | 38
-File Resource words_it.txt                                  |117558    |    1     |    0    |     2   | 28
-File Resource words_latin.txt                               | 80007    |    0     |        1|     1   | 34
-File Resource words_en_es_it_latin.txt                      |315198    |    4     |        9|     9   | 271
-File Resource words_and_numbers.txt                         |429187    |    4     |       20|    19   | 251
-File Resource first_million_primes.txt                      |1000000   |     104  |      118|    85   |  0
-File Resource random_64bit_signed_numbers.txt               |1000000   |     124  |      110|    143  | 122
+File Resource words_en.txt                                  | 65503    |         0|        0|        0|       14
+File Resource words_es.txt                                  | 74571    |         0|        2|        0|       38
+File Resource words_it.txt                                  |117558    |         0|        0|        2|       28
+File Resource words_latin.txt                               | 80007    |         0|        1|        1|       34
+File Resource words_en_es_it_latin.txt                      |315198    |         6|        9|        9|      271
+File Resource words_and_numbers.txt                         |429187    |         9|       20|       19|      251
+File Resource first_million_primes.txt                      |1000000   |       104|      118|       85|        0
+File Resource random_64bit_signed_numbers.txt               |1000000   |       119|      110|      143|      122
 
 #### 32-bit hash functions: number of collisions for data input from [15-40] bytes
 
