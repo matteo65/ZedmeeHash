@@ -1,7 +1,8 @@
 # ZeemeeHash 32/64
 Very strong, fast, non-cryptographic 32/64 hash function  
 
-The algorithm is divided into two phases. In the first phase, the first 4 bytes (8 in the 64-bit version) are used to generate a unique random hash; for this purpose it uses a preloaded table containing a random permutation of all 256 bytes generated at inizialization or instantiation. In the second phase, instead, an algorithm is similar to a linear congruential generator.
+The algorithm is very simple: it processes blocks of 4 bytes (any remaining at the end) (blocks of 8 for the 64-bit), calculates a hash that mixes with the previous value.  
+It uses a preloaded table containing a random permutation (6 seeds) of all 256 bytes generated at inizialization or instantiation.
 The result is a very strong, fast and simple function with average performance superior to all existing hash functions.  
 
 ## Uniform and chaotic distribution of hash values
