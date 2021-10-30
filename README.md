@@ -1,4 +1,4 @@
-# ZeemeeHash 32/64
+# ZedmeeHash 32/64
 Very strong, fast, non-cryptographic 32/64 hash function  
 
 The algorithm is very simple: it processes blocks of 4 bytes (any remaining at the end) (blocks of 8 for the 64-bit), calculates a hash that mixes with the previous value.  
@@ -6,10 +6,10 @@ It uses a preloaded table containing a random permutation (6 seeds) of all 256 b
 The result is a very strong, fast and simple function with average performance superior to all existing hash functions.  
 
 ## Uniform and chaotic distribution of hash values
-Zeemee has an absolutely uniform, chaotic distribution of hash values independent of the number, length and type of input values.
+Zedmee has an absolutely uniform, chaotic distribution of hash values independent of the number, length and type of input values.
 Even minimal differences (1 bit) in the input values produce very different hash values.  
 
-![Alt Text](https://raw.githubusercontent.com/matteo65/ZeemeeHash/main/Resource/zmh_distributions.png)
+![Alt Text](https://raw.githubusercontent.com/matteo65/ZedmeeHash/main/Resource/zmh_distributions.png)
 
 ## Minimum number of collisions for a set of reasonably large input values
 For all possible input values not exceeding 4 bytes for the 32-bit version (8 bytes for the 64-bit version)  
@@ -20,7 +20,7 @@ If, on the other hand, the input values are absolutely random, the number of col
 
 #### 32-bit hash functions: number of collisions for small data input [1-5] bytes   
 
-Data input                                                                        |#Hashes   | Zeemee   | Murmur3 | XX  | Rabin  
+Data input                                                                        |#Hashes   | Zedmee   | Murmur3 | XX  | Rabin  
 ----------------------------------------------------------------------------------|----------|----------|---------|-----|--------
 4 byte length values 00000000-FFFFFFFF                                            |4294967296|   0      |      0  |  0  |  0    
 1 byte 00-FF, 2 bytes 0100-FFFF, 3 bytes 010000-FFFFFF, 4 bytes 01000000-FFFFFFFF |4294967296|   0      |16711655 |16711713|16777216   
@@ -29,7 +29,7 @@ Data input                                                                      
 
 #### 32-bit hash functions: number of collisions for strings (ASCII 1 byte per char)
 
-Data input                                                  |#Hashes   | Zeemee   | Murmur3|    XX    | Rabin
+Data input                                                  |#Hashes   | Zedmee   | Murmur3|    XX    | Rabin
 ------------------------------------------------------------|----------|----------|--------|----------|-------
 Numbers as strings from "0" to "999999999"                  |1000000000| 106488311|107822463|110287893|365950432
 File Resource words_en.txt                                  | 65503    |    0     |   0     |    0    | 14
@@ -43,7 +43,7 @@ File Resource random_64bit_signed_numbers.txt               |1000000   |     124
 
 #### 32-bit hash functions: number of collisions for data input from [15-40] bytes
 
-Data input                                                                             | #Hashes  | Zeemee   | Murmur3|    XX   | Rabin
+Data input                                                                             | #Hashes  | Zedmee   | Murmur3|    XX   | Rabin
 ---------------------------------------------------------------------------------------|----------|----------|--------|---------|-------
 Number as strings from "1234567890123456789" to "1234567890223456789"                  |100000000 | 940512   | 1155789|  808693 | 0      
 Strings from "abcdefg1234567890123456789hijklmn" to "abcdefg1234567890223456789hijklmn"|100000000 | 1080583  | 1152600| 1037151 | 0  
@@ -53,7 +53,7 @@ Strings 48 length "XXXXXX" X from "00000000" to "05F5E0FF"                      
 
 
 ## Vulnerability
-Zeemee, like most non-cryptographic functions, is not secure because it is not specifically designed to be difficult to reverse by an adversary, making it unsuitable for cryptographic purposes. Its use is instead recommended in all other contexts where hash functions are used.  
+Zedmee, like most non-cryptographic functions, is not secure because it is not specifically designed to be difficult to reverse by an adversary, making it unsuitable for cryptographic purposes. Its use is instead recommended in all other contexts where hash functions are used.  
 However, since it uses 6 seeds of 32-bit values (used once in the initialization or instantiation), its security is given by the secrecy of these 6 seeds, the combination of which is 192 bits which make zeemee certainly less vulnerable than all the other non-cryptographic functions.   
 
 ## Portability
