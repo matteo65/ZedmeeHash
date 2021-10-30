@@ -21,13 +21,8 @@ package net.zeemeelab.zeemeehash;
  */
 public class ZeemeeHash32 extends ZeemeeHash {
 	
-	public static final int ASCII_ALPHANUM_SEED = 0x189DDD86; 
-	public static final int ASCII_LANGUAGE_WORDS_SEED = 0x9D00256A; 
-	public static final int ASCII_PRINTABLE_SEED = 0xFDC40804; 
-	public static final int ASCII_DIGIT_SEED = 0x2F422C8D; 
-	
-	public static final int DEFAULT_SEED = ASCII_ALPHANUM_SEED; 
-
+	public static final int DEFAULT_SEED = 1773772666;
+		
 	public ZeemeeHash32(int seed1, int seed2, int seed3, int seed4) {
 		super(seed1, seed2, seed3, seed4);
 	}
@@ -39,60 +34,57 @@ public class ZeemeeHash32 extends ZeemeeHash {
 	public ZeemeeHash32() {
 		super(DEFAULT_SEED);
 	}
-
+	
 	/**
-	 * Evaluate and return the hash value of [data[pos], data[pos+1] ... data[pos + length - 1]]
+	 * Return the hash value of {data[pos], data[pos+1] ... data[pos + length - 1]}
 	 * @param data
 	 * @param pos >= 0 && pos < data.length
-	 * @param length >= 1 && pos + length <= data.length
+	 * @param length >= 0 && pos + length <= data.length
 	 * @return hash value
 	 */
 	public int hash(final byte[] data, int pos, int length) {
-		int b1, b2, b3, b4;
-		
-		switch(length) {
-		case 1:
-			b1 = b2 = b3 = byteTable0;
-			b4 = byteTable[data[pos] & 0xff];
-			break;
-			
-		case 2:
-			b1 = b2 = byteTable0;
-			b3 = byteTable[data[pos] & 0xff];
-			b4 = byteTable[data[pos + 1] & 0xff];
-			break;
-			
-		case 3:
-			b1 = byteTable0;
-			b2 = byteTable[data[pos] & 0xff];
-			b3 = byteTable[data[pos + 1] & 0xff];
-			b4 = byteTable[data[pos + 2] & 0xff];
-			break;
-			
-		default:
-			b1 = byteTable[data[pos++] & 0xff];
-			b2 = byteTable[data[pos++] & 0xff];
-			b3 = byteTable[data[pos++] & 0xff];
-			b4 = byteTable[data[pos++] & 0xff];
-		}
+		int hash = 1;
 
-		b1 = byteTable[b1 ^ b4];
-		b2 = byteTable[b2 ^ b1];
-		b3 = byteTable[b3 ^ b2];
-		b4 = byteTable[b4 ^ b3];
-		
-		int x = b2 ^ b1;
-		int y = b4 ^ b3;
-		int h = ((b3 ^ x) << 24) | ((b4 ^ x) << 16) | ((y ^ b1) << 8) | (y ^ b2);
-		
-		if(length > 4) {
-			length = pos + length - 4;
-    			do {
-    				h = h * 134775813 + data[pos++];
+		while(length > 0) {
+    			int b1, b2, b3, b4;
+    		
+    			switch(length) {
+    			case 1:
+    				b1 = b2 = b3 = byteTable0;
+    				b4 = byteTable[data[pos] & 0xff];
+    				length = 0;
+    				break;
+    			
+    			case 2:
+    				b1 = b2 = byteTable0;
+    				b3 = byteTable[data[pos] & 0xff];
+    				b4 = byteTable[data[pos + 1] & 0xff];
+    				length = 0;
+    				break;
+    			
+    			case 3:
+    				b1 = byteTable0;
+    				b2 = byteTable[data[pos] & 0xff];
+    				b3 = byteTable[data[pos + 1] & 0xff];
+    				b4 = byteTable[data[pos + 2] & 0xff];
+    				length = 0;
+    				break;
+    			
+    			default:
+    				b1 = byteTable[(pos + data[pos++]) & 0xff];
+    				b2 = byteTable[(pos + data[pos++]) & 0xff];
+    				b3 = byteTable[(pos + data[pos++]) & 0xff];
+    				b4 = byteTable[(pos + data[pos++]) & 0xff];
+    				length -= 4;
     			}
-    			while(pos < length);
+
+    			int x = b2 ^ b1;
+    			int y = b4 ^ b3;
+    			hash = (0x08088405 * hash) ^
+    			       (((b3 ^ x) << 24) | ((b4 ^ x) << 16) | ((y ^ b1) << 8) | (y ^ b2));
 		}
-		return h;
+				
+		return hash;
 	}
 	
 	public int hash(final byte[] data, int length) {
