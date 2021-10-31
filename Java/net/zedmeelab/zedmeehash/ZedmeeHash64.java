@@ -46,100 +46,100 @@ public class ZedmeeHash64 extends ZedmeeHash {
 		long h = 1L;
 		
 		while(length > 0) {
-    		long b1, b2, b3, b4, b5, b6, b7, b8;
+    			long b1, b2, b3, b4, b5, b6, b7, b8;
     
-    		switch(length) {
-    		case 1:
-    			b1 = b2 = b3 = b4 = b5 = b6 = b7 = byteTable0;
-    			b8 = byteTable[data[pos] & 0xff];
-    			length = 0;
-    			break;
-    
-    		case 2:
-    			b1 = b2 = b3 = b4 = b5 = b6 = byteTable0;
-    			b7 = byteTable[data[pos] & 0xff];
-    			b8 = byteTable[data[pos + 1] & 0xff];
-    			length = 0;
-    			break;
-    
-    		case 3:
-    			b1 = b2 = b3 = b4 = b5 = byteTable0;
-    			b6 = byteTable[data[pos] & 0xff];
-    			b7 = byteTable[data[pos + 1] & 0xff];
-    			b8 = byteTable[data[pos + 2] & 0xff];
-    			length = 0;
-    			break;
-    
-    		case 4:
-    			b1 = b2 = b3 = b4 = byteTable0;
-    			b5 = byteTable[data[pos] & 0xff];
-    			b6 = byteTable[data[pos + 1] & 0xff];
-    			b7 = byteTable[data[pos + 2] & 0xff];
-    			b8 = byteTable[data[pos + 3] & 0xff];
-    			length = 0;
-    			break;
-    
-    		case 5:
-    			b1 = b2 = b3 = byteTable0;
-    			b4 = byteTable[data[pos] & 0xff];
-    			b5 = byteTable[data[pos + 1] & 0xff];
-    			b6 = byteTable[data[pos + 2] & 0xff];
-    			b7 = byteTable[data[pos + 3] & 0xff];
-    			b8 = byteTable[data[pos + 4] & 0xff];
-    			length = 0;
-    			break;
-    
-    		case 6:
-    			b1 = b2 = byteTable0;
-    			b3 = byteTable[data[pos] & 0xff];
-    			b4 = byteTable[data[pos + 1] & 0xff];
-    			b5 = byteTable[data[pos + 2] & 0xff];
-    			b6 = byteTable[data[pos + 3] & 0xff];
-    			b7 = byteTable[data[pos + 4] & 0xff];
-    			b8 = byteTable[data[pos + 5] & 0xff];
-    			length = 0;
-    			break;
-    
-    		case 7:
-    			b1 = byteTable0;
-    			b2 = byteTable[data[pos] & 0xff];
-    			b3 = byteTable[data[pos + 1] & 0xff];
-    			b4 = byteTable[data[pos + 2] & 0xff];
-    			b5 = byteTable[data[pos + 3] & 0xff];
-    			b6 = byteTable[data[pos + 4] & 0xff];
-    			b7 = byteTable[data[pos + 5] & 0xff];
-    			b8 = byteTable[data[pos + 6] & 0xff];
-    			length = 0;
-    			break;
-    
-    		default:
-    			b1 = byteTable[(pos + data[pos++]) & 0xff];
-    			b2 = byteTable[(pos + data[pos++]) & 0xff];
-    			b3 = byteTable[(pos + data[pos++]) & 0xff];
-    			b4 = byteTable[(pos + data[pos++]) & 0xff];
-    			b5 = byteTable[(pos + data[pos++]) & 0xff];
-    			b6 = byteTable[(pos + data[pos++]) & 0xff];
-    			b7 = byteTable[(pos + data[pos++]) & 0xff];
-    			b8 = byteTable[(pos + data[pos++]) & 0xff];
-    			length -= 8;
-    		}
-    
-    		long x1 = b2 ^ b1;
-    		long x2 = b4 ^ b3;
-    		long x3 = b6 ^ b5;
-    		long x4 = b8 ^ b7;
-    		long y1 = x2 ^ x1;
-    		long y2 = x4 ^ x3;
-    
-    		h = (6364136223846793005L * h) ^
-    		    (((b7 ^ x3 ^ y1) << 56) |
-    			 ((b8 ^ x3 ^ y1) << 48) |
-    			 ((x4 ^ b5 ^ y1) << 40) |
-    			 ((x4 ^ b6 ^ y1) << 32) |
-    			 ((y2 ^ b3 ^ x1) << 24) |
-    			 ((y2 ^ b4 ^ x1) << 16) |
-    			 ((y2 ^ x2 ^ b1) << 8) |
-    			 ((y2 ^ x2 ^ b2)));
+			switch(length) {
+			case 1:
+				b1 = b2 = b3 = b4 = b5 = b6 = b7 = byteTable0;
+				b8 = byteTable[data[pos] & 0xff];
+				length = 0;
+				break;
+
+			case 2:
+				b1 = b2 = b3 = b4 = b5 = b6 = byteTable0;
+				b7 = byteTable[data[pos] & 0xff];
+				b8 = byteTable[data[pos + 1] & 0xff];
+				length = 0;
+				break;
+
+			case 3:
+				b1 = b2 = b3 = b4 = b5 = byteTable0;
+				b6 = byteTable[data[pos] & 0xff];
+				b7 = byteTable[data[pos + 1] & 0xff];
+				b8 = byteTable[data[pos + 2] & 0xff];
+				length = 0;
+				break;
+
+			case 4:
+				b1 = b2 = b3 = b4 = byteTable0;
+				b5 = byteTable[data[pos] & 0xff];
+				b6 = byteTable[data[pos + 1] & 0xff];
+				b7 = byteTable[data[pos + 2] & 0xff];
+				b8 = byteTable[data[pos + 3] & 0xff];
+				length = 0;
+				break;
+
+			case 5:
+				b1 = b2 = b3 = byteTable0;
+				b4 = byteTable[data[pos] & 0xff];
+				b5 = byteTable[data[pos + 1] & 0xff];
+				b6 = byteTable[data[pos + 2] & 0xff];
+				b7 = byteTable[data[pos + 3] & 0xff];
+				b8 = byteTable[data[pos + 4] & 0xff];
+				length = 0;
+				break;
+
+			case 6:
+				b1 = b2 = byteTable0;
+				b3 = byteTable[data[pos] & 0xff];
+				b4 = byteTable[data[pos + 1] & 0xff];
+				b5 = byteTable[data[pos + 2] & 0xff];
+				b6 = byteTable[data[pos + 3] & 0xff];
+				b7 = byteTable[data[pos + 4] & 0xff];
+				b8 = byteTable[data[pos + 5] & 0xff];
+				length = 0;
+				break;
+
+			case 7:
+				b1 = byteTable0;
+				b2 = byteTable[data[pos] & 0xff];
+				b3 = byteTable[data[pos + 1] & 0xff];
+				b4 = byteTable[data[pos + 2] & 0xff];
+				b5 = byteTable[data[pos + 3] & 0xff];
+				b6 = byteTable[data[pos + 4] & 0xff];
+				b7 = byteTable[data[pos + 5] & 0xff];
+				b8 = byteTable[data[pos + 6] & 0xff];
+				length = 0;
+				break;
+
+			default:
+				b1 = byteTable[(pos + data[pos++]) & 0xff];
+				b2 = byteTable[(pos + data[pos++]) & 0xff];
+				b3 = byteTable[(pos + data[pos++]) & 0xff];
+				b4 = byteTable[(pos + data[pos++]) & 0xff];
+				b5 = byteTable[(pos + data[pos++]) & 0xff];
+				b6 = byteTable[(pos + data[pos++]) & 0xff];
+				b7 = byteTable[(pos + data[pos++]) & 0xff];
+				b8 = byteTable[(pos + data[pos++]) & 0xff];
+				length -= 8;
+			}
+
+			long x1 = b2 ^ b1;
+			long x2 = b4 ^ b3;
+			long x3 = b6 ^ b5;
+			long x4 = b8 ^ b7;
+			long y1 = x2 ^ x1;
+			long y2 = x4 ^ x3;
+
+			h = (6364136223846793005L * h) ^
+			    (((b7 ^ x3 ^ y1) << 56) |
+				 ((b8 ^ x3 ^ y1) << 48) |
+				 ((x4 ^ b5 ^ y1) << 40) |
+				 ((x4 ^ b6 ^ y1) << 32) |
+				 ((y2 ^ b3 ^ x1) << 24) |
+				 ((y2 ^ b4 ^ x1) << 16) |
+				 ((y2 ^ x2 ^ b1) << 8) |
+				 ((y2 ^ x2 ^ b2)));
 		}
 
 		return h;
