@@ -46,42 +46,42 @@ public class ZedmeeHash32 extends ZedmeeHash {
 		int h = 1;
 
 		while(length > 0) {
-    		int b1, b2, b3, b4;
-    		
-    		switch(length) {
-    		case 1:
-    			b1 = b2 = b3 = byteTable0;
-    			b4 = byteTable[data[pos] & 0xff];
-    			length = 0;
-    			break;
-    			
-    		case 2:
-    			b1 = b2 = byteTable0;
-    			b3 = byteTable[data[pos] & 0xff];
-    			b4 = byteTable[data[pos + 1] & 0xff];
-    			length = 0;
-    			break;
-    			
-    		case 3:
-    			b1 = byteTable0;
-    			b2 = byteTable[data[pos] & 0xff];
-    			b3 = byteTable[data[pos + 1] & 0xff];
-    			b4 = byteTable[data[pos + 2] & 0xff];
-    			length = 0;
-    			break;
-    			
-    		default:
-    			b1 = byteTable[(pos + data[pos++]) & 0xff];
-    			b2 = byteTable[(pos + data[pos++]) & 0xff];
-    			b3 = byteTable[(pos + data[pos++]) & 0xff];
-    			b4 = byteTable[(pos + data[pos++]) & 0xff];
-    			length -= 4;
-    		}
+			int b1, b2, b3, b4;
 
-    		int x = b2 ^ b1;
-    		int y = b4 ^ b3;
-    		h = (134775813 * h) ^
-    			   (((b3 ^ x) << 24) | ((b4 ^ x) << 16) | ((y ^ b1) << 8) | (y ^ b2));
+			switch(length) {
+			case 1:
+				b1 = b2 = b3 = byteTable0;
+				b4 = byteTable[data[pos] & 0xff];
+				length = 0;
+				break;
+
+			case 2:
+				b1 = b2 = byteTable0;
+				b3 = byteTable[data[pos] & 0xff];
+				b4 = byteTable[data[pos + 1] & 0xff];
+				length = 0;
+				break;
+
+			case 3:
+				b1 = byteTable0;
+				b2 = byteTable[data[pos] & 0xff];
+				b3 = byteTable[data[pos + 1] & 0xff];
+				b4 = byteTable[data[pos + 2] & 0xff];
+				length = 0;
+				break;
+
+			default:
+				b1 = byteTable[(pos + data[pos++]) & 0xff];
+				b2 = byteTable[(pos + data[pos++]) & 0xff];
+				b3 = byteTable[(pos + data[pos++]) & 0xff];
+				b4 = byteTable[(pos + data[pos++]) & 0xff];
+				length -= 4;
+			}
+
+			int x = b2 ^ b1;
+			int y = b4 ^ b3;
+			h = (134775813 * h) ^
+			    (((b3 ^ x) << 24) | ((b4 ^ x) << 16) | ((y ^ b1) << 8) | (y ^ b2));
 		}
 				
 		return h;
