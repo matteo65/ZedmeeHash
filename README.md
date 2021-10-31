@@ -2,7 +2,7 @@
 Very strong, fast, non-cryptographic 32/64 hash function  
 
 The algorithm is very simple: it processes blocks of 4 bytes (any remaining at the end) (blocks of 8 for the 64-bit), calculates a hash that mixes with the previous value.  
-It uses a preloaded table containing a random permutation (6 seeds) of all 256 bytes generated at inizialization or instantiation.
+It uses a preloaded table containing a random permutation (6 seeds) of all 256 bytes generated at inizialization or instantiation.  
 The result is a very strong, fast and simple function with average performance superior to all existing hash functions.  
 
 ## Uniform and chaotic distribution of hash values
