@@ -43,7 +43,7 @@ public class ZeemeeHash32 extends ZeemeeHash {
 	 * @return hash value
 	 */
 	public int hash(final byte[] data, int pos, int length) {
-		int hash = 1;
+		int h = 1;
 
 		while(length > 0) {
     			int b1, b2, b3, b4;
@@ -80,11 +80,11 @@ public class ZeemeeHash32 extends ZeemeeHash {
 
     			int x = b2 ^ b1;
     			int y = b4 ^ b3;
-    			hash = (0x08088405 * hash) ^
-    			       (((b3 ^ x) << 24) | ((b4 ^ x) << 16) | ((y ^ b1) << 8) | (y ^ b2));
+    			h = (0x08088405 * h) ^
+    			    (((b3 ^ x) << 24) | ((b4 ^ x) << 16) | ((y ^ b1) << 8) | (y ^ b2));
 		}
 				
-		return hash;
+		return h;
 	}
 	
 	public int hash(final byte[] data, int length) {
