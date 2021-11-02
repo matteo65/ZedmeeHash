@@ -2,7 +2,7 @@
 Very strong, fast, non-cryptographic 32/64 hash function  
 
 The algorithm is very simple: it processes blocks of 4 bytes (any remaining at the end) (blocks of 8 for the 64-bit), calculates a hash that mixes with the previous value.  
-It uses a preloaded table containing a random permutation (6 seeds) of all 256 bytes generated at inizialization or instantiation.  
+It uses a preloaded table containing a random permutation (4 seeds) of all 256 bytes generated at inizialization or instantiation.  
 The result is a very strong, fast and simple function with average performance superior to all existing hash functions.  
 
 ## Uniform and chaotic distribution of hash values
@@ -52,7 +52,7 @@ Strings 48 length "ssssss", s from "00000000" to "05F5E0FF"                     
 
 ## Vulnerability
 Zedmee, like most non-cryptographic functions, is non-secure because it is not specifically designed to be difficult to reverse by an adversary, making it unsuitable for cryptographic purposes. Its use is instead recommended in all other contexts where hash functions are used.  
-However, since it uses 6 seeds of 32-bit values (used once in the initialization or instantiation), its security is given by the secrecy of these 6 seeds, the combination of which is 192 bits which make zeemee certainly less vulnerable than all the other non-cryptographic functions.   
+However, since it uses 6 seeds of 32-bit values (used once in the initialization or instantiation), its security is given by the secrecy of these 4 seeds, the combination of which is 128 bits which make zeemee certainly less vulnerable than all the other non-cryptographic functions.   
 
 ## Portability
 It is simple, straightforward and can be easily written in virtually any programming language.  
