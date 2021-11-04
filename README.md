@@ -1,5 +1,5 @@
 # ZedmeeHash 32/64
-Very strong, fast, non-cryptographic 32/64 hash function  
+Very strong, super fast, non-cryptographic 32/64 hash function  
 
 The algorithm is very simple: it processes blocks of 4 bytes (any remaining at the end) (blocks of 8 for the 64-bit), calculates a hash that mixes with the previous value.  
 It uses a preloaded table containing a random permutation (4 seeds) of all 256 bytes generated at inizialization or instantiation.  
