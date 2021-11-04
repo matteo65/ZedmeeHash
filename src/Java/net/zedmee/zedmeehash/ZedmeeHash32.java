@@ -113,7 +113,7 @@ public class ZedmeeHash32 {
 		
 		final int len = pos + length;
 		final int[] table = rtable;
-		for(int i = 0; i < len; i++)
+		for(int i = pos; i < len; i++)
 			h = (134775813 * h) ^ table[(i + data[i]) & 0xFF];
 		
 		return h;
