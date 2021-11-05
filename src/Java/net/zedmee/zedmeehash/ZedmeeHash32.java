@@ -36,98 +36,76 @@ package net.zedmee.zedmeehash;
  */
 public class ZedmeeHash32 {
 	
-	public static final int DEFAULT_SEED1 = -2006565715;
-	public static final int DEFAULT_SEED2 = -1309593651;
-	public static final int DEFAULT_SEED3 = -1110248082;
-	public static final int DEFAULT_SEED4 = -1465989877;
+	public static int DEFAULT_SEED = 1;
 	
 	/** Random table */
-	private final int[] rtable = new int[256];
+	private static final int[] rtable = new int[256];
 	
-	// Used by lfsr113 pseudo random number generator
-	// Author: Pierre L'Ecuyer
-	// The initial seeds z1, z2, z3, z4  MUST be larger than
-	// 1, 7, 15, and 127 respectively!!!
-	private int z1, z2, z3, z4;
-	
-	public ZedmeeHash32(int seed1, int seed2, int seed3, int seed4) {
-		// Note: seed1,2,3,4 are consider unsigned
-		if((seed1 & 0xFFFFFFFE) == 0) {
-			// seed1 is less than 2 
-			seed1 |= 0x02;
-		}
-		z1 = seed1;
+	static {
+		// lfsr113 pseudo random number generator
+		// Author: Pierre L'Ecuyer
+		// The initial (uint32) seeds z1, z2, z3, z4  MUST be larger than
+		// 1, 7, 15, and 127 respectively!!!
 		
-		if((seed2 & 0xFFFFFFF8) == 0) {
-			// seed2 is less than 8
-			seed2 |= 0x08;
-		}
-		z2 = seed2;
+		int z1 = 0x88663CAD;
+		int z2 = 0xB1F12FCD;
+		int z3 = 0xBDD2F56E;
+		int z4 = 0xA89EC50B;
 		
-		if((seed3 & 0xFFFFFFF0) == 0) {
-			// seed3 is less than 16
-			seed3 |= 0x10;
+		for(int i = 0; i < 256; i++) {
+			int b = (((z1 << 6) ^ z1) >>> 13);
+			z1 = (((z1 & 0xFFFFFFFE) << 18) ^ b);
+			b = (((z2 << 2) ^ z2) >>> 27);
+			z2 = (((z2 & 0xFFFFFFF8) << 2) ^ b);
+			b = (((z3 << 13) ^ z3) >>> 21);
+			z3 = (((z3 & 0xFFFFFFF0) << 7) ^ b);
+			b = (((z4 << 3) ^ z4) >>> 12);
+			z4 = (((z4 & 0xFFFFFF80) << 13) ^ b);
+			
+			rtable[i] = z1 ^ z2 ^ z3 ^ z4;
 		}
-		z3 = seed3;
-		
-		if((seed4 & 0xFFFFFF80) == 0) {
-			// seed4 is less than 128;
-			seed4 |= 0x80; // Force bit 128
-		}
-		z4 = seed4;
-		
-		for(int i = 0; i < 256; i++)
-			rtable[i] = nextInt();
 	}
 	
-	public ZedmeeHash32() {
-		this(DEFAULT_SEED1, DEFAULT_SEED2, DEFAULT_SEED3, DEFAULT_SEED4);
-	}
+	private ZedmeeHash32() {}
 	
 	/**
-	 * lfsr113 algorithm
-	 * @return
-	 */
-	private int nextInt() { 
-		int b = (((z1 << 6) ^ z1) >>> 13);
-		z1 = (((z1 & 0xFFFFFFFE) << 18) ^ b);
-		b = (((z2 << 2) ^ z2) >>> 27);
-		z2 = (((z2 & 0xFFFFFFF8) << 2) ^ b);
-		b = (((z3 << 13) ^ z3) >>> 21);
-		z3 = (((z3 & 0xFFFFFFF0) << 7) ^ b);
-		b = (((z4 << 3) ^ z4) >>> 12);
-		z4 = (((z4 & 0xFFFFFF80) << 13) ^ b);
-		
-		return z1 ^ z2 ^ z3 ^ z4;
-	}
-	
-	/**
-	 * 
+	 * Best seed = 1, -201393507
+	 * Good seeds = -1702396384, -1386153758, 1521663501, -737420661, -14935042, 
+	 *              -201978080, -1079041895
 	 * @param data not null
 	 * @param pos >= 0 and < data.length
 	 * @param length >= 0 and <= data.length
 	 * @return
 	 */
-	public int hash(final byte[] data, final int pos, final int length) {
-		int h = 1;
-		
+	
+	public static int hash(final byte[] data, final int pos, final int length, int seed) {
+		int h = seed;
 		final int len = pos + length;
-		final int[] table = rtable;
 		for(int i = pos; i < len; i++)
-			h = (134775813 * h) ^ table[(i + data[i]) & 0xFF];
-		
+			h = (h * 134775813) ^ rtable[(i + data[i]) & 0xFF];
 		return h;
 	}
 	
-	public int hash(final byte[] data, final int length) {
-		return hash(data, 0, length);
+	/**
+	 * Preferable version with default seed
+	 * @param data not null
+	 * @param pos >= 0 and < data.length
+	 * @param length >= 0 and <= data.length
+	 * @return
+	 */
+	public static int hash(final byte[] data, final int pos, final int length) {
+		return hash(data, pos, length, DEFAULT_SEED);
 	}
 	
-	public int hash(final byte[] data) {
-		return hash(data, 0, data.length);
+	public static int hash(final byte[] data, final int length) {
+		return hash(data, 0, length, DEFAULT_SEED);
 	}
 	
-	public int hash(int i) {
+	public static int hash(final byte[] data) {
+		return hash(data, 0, data.length, DEFAULT_SEED);
+	}
+
+	public static int hash(int i) {
 		int h = 1;
 		
 		for(int p = 0, s = 24; p < 4; p++, s -= 8)
@@ -136,7 +114,7 @@ public class ZedmeeHash32 {
 		return h;
 	}
 	
-	public int hash(long l) {
+	public static int hash(long l) {
 		int h = 1;
 		
 		for(int p = 0, s = 56; p < 8; p++, s -= 8)
@@ -145,28 +123,27 @@ public class ZedmeeHash32 {
 		return h;
 	}
 	
-	public int hash(short i) {
+	public static int hash(short i) {
 		int h = 134775813 ^ rtable[(i >>> 8) & 0xFF];
 		return (134775813 * h) ^ rtable[(1 + i) & 0xFF];
 	}
 	
-	public int hash(char c) {
+	public static int hash(char c) {
 		int h = 134775813 ^ rtable[(c >>> 8) & 0xFF];
 		return (134775813 * h) ^ rtable[(1 + c) & 0xFF];
 	}
 	
-	public int hash(byte b) {
+	public static int hash(byte b) {
 		return 134775813 ^ rtable[b & 0xFF];
 	}
 	
-	public int hash(CharSequence cs) {
+	public static int hash(CharSequence cs) {
 		int h = 1;
 		final int len = cs.length();
-		final int[] table = rtable;
 		for(int i = 0; i < len; i++) {
 			char ch = cs.charAt(i);
-			h = (134775813 * h) ^ table[((i << 1) + ch) & 0xFF];
-			h = (134775813 * h) ^ table[(1 + (i << 1) + (ch >>> 8)) & 0xFF];
+			h = (134775813 * h) ^ rtable[((i << 1) + ch) & 0xFF];
+			h = (134775813 * h) ^ rtable[(1 + (i << 1) + (ch >>> 8)) & 0xFF];
 		}
 		return h;
 	}
