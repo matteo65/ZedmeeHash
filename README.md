@@ -1,14 +1,20 @@
 # ZedmeeHash 32/64
 Strong, very fast, simple, non-cryptographic 32/64 hash function  
 
-The algorithm is very simple: in the inizialization or instantiation it generate a preload random table for each byte value using the lfsr113 (for 32 bit) or lfsr258 (for 64 bit) algorithm. The hash is calcolated using a Linear Congruential Generator mixed with the values of the random table.  
-The result is a very strong, fast and simple function with number of collisions and hash scattering comparable if not superior to the best hash functions, but much faster.  
+The algorithm belongs to the family of LCG (linear congruential generator) like the hash function of java, so it is very simple and fast, but unlike others, zedmee has a much higher quality as it uses some tricks to eliminate the defects of the LCG functions.  
+It uses a preloaded table at initialization that contains 256 random values (one for each byte) generated with the algorithm lfsr113 (for 32 bit) or lfsr258 (for 64 bit).  
+
+The use of the random table allows to eliminate the main defect of the LCG functions: their distribution is not perfectly uniform, but follows some patterns that are highlighted through the representation on a two-dimensional map.  
+
+Through the selection of the particular seeds, numerical recipes and other small tricks, zedmee is able to achieve the quality of the best hash functions, maintaining the simplicity and the great speed of the LCGs.  
 
 ## Uniform and chaotic distribution of hash values (dispersion)
 Zedmee has an absolutely uniform, chaotic distribution of hash values independent of the number, length and type of input values.  
 Even minimal differences (1 bit) in the input values produce very different hash values.  
 
 ![Alt Text](https://raw.githubusercontent.com/matteo65/ZedmeeHash/main/Resource/zmh_distributions.png)
+
+
 
 #### 32-bit hash functions: number of collisions for strings (ASCII 1 byte per char)
 
