@@ -18,6 +18,9 @@ java.util.Arrays.hashCode()
 ZedmeeHash32.hash()  
 ![Alt Text](https://raw.githubusercontent.com/matteo65/ZedmeeHash/main/Resource/zmh_distributions.png)
 
+## Minimum number of collisions
+Zedmee belongs to the family of dispersing hash functions which always guarantees a very low number of collisions for each reasonably large number of values.  
+
 #### 32-bit hash functions: number of collisions for strings (ASCII 1 byte per char)
 
 Data input                                                  |#Hashes   | Zedmee   | Murmur3 |    XX   |  Rabin
