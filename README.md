@@ -14,8 +14,8 @@ Even minimal differences (1 bit) in the input values produce very different hash
 
 java.util.Arrays.hashCode()  
 ![Alt Text](https://raw.githubusercontent.com/matteo65/ZedmeeHash/main/Resource/java_hash.png)
-
-ZedmeeHash32.hash()
+  
+ZedmeeHash32.hash()  
 ![Alt Text](https://raw.githubusercontent.com/matteo65/ZedmeeHash/main/Resource/zmh_distributions.png)
 
 #### 32-bit hash functions: number of collisions for strings (ASCII 1 byte per char)
