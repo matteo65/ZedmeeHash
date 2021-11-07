@@ -1,7 +1,7 @@
 # ZedmeeHash 32/64
 Strong, fast, simple, non-cryptographic 32/64 hash function  
 
-The algorithm belongs to the family of LCG (linear congruential generator) like the hash function of java, so it is very simple and fast, but unlike others, zedmee has a much higher quality as it uses some tricks to eliminate the defects of the LCG functions.  
+Zedmee is a multiplicative hash function, it belongs to the family of LCG (linear congruential generator) like the hash function of java, so it is very simple and fast, but unlike others, zedmee has a much higher quality as it uses some tricks to eliminate the defects of the LCG functions.  
 It uses a preloaded table at initialization that contains 256 random values (one for each byte) generated with the algorithm lfsr113 (for 32 bit) or lfsr258 (for 64 bit).  
 
 The use of the random table allows to eliminate the main defect of the LCG functions: their distribution is not perfectly uniform, but follows some patterns that are highlighted through the representation on a two-dimensional map.  
@@ -52,4 +52,9 @@ Like other non-cryptographic functions, its security depends on the secrecy of t
 
 ## Portability
 It is simple, straightforward and can be easily written in virtually any programming language.  
-Currently C and Java versions are for Big Endian architecture but mirror functions for Little Endian can be easily written.    
+Currently C and Java versions are for Big Endian architecture but mirror functions for Little Endian can be easily written.  
+
+## Conclusion
+Zedmee demonstrates to have a quality of the dispersion of values close to a Universal Hash Function, and shares this quality with Murmur3, while XX has a slightly lower quality as it has a distribution that in some cases differs (positively or negatively) from a random spread.  
+In terms of speed, XX is certainly the best performing, even in the non-parallel version, but zedmee is only slightly lower and certainly faster than all other hash functions of similar quality.  
+Therefore it can be said that zedmee combines maximum distribution performance, speed and simplicity which make it an ideal function for non-cryptographic hashing.  
