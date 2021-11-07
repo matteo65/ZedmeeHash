@@ -77,12 +77,12 @@ public class ZedmeeHash32 {
 	 * @param length >= 0 and <= data.length
 	 * @return
 	 */
-	
 	public static int hash(final byte[] data, final int pos, final int length, int seed) {
 		int h = seed;
 		final int len = pos + length;
+		final int[] table = rtable[];
 		for(int i = pos; i < len; i++)
-			h = (h * 134775813) ^ rtable[(i + data[i]) & 0xFF];
+			h = (h * 134775813) ^ table[(i + data[i]) & 0xFF];
 		return h;
 	}
 	
@@ -106,20 +106,18 @@ public class ZedmeeHash32 {
 	}
 
 	public static int hash(int i) {
-		int h = 1;
-		
+		int h = DEFAULT_SEED;
+		final int[] table = rtable;
 		for(int p = 0, s = 24; p < 4; p++, s -= 8)
-			h = (134775813 * h) ^ rtable[(p + (i >>> s)) & 0xFF];
-		
+			h = (134775813 * h) ^ table[(p + (i >>> s)) & 0xFF];
 		return h;
 	}
 	
 	public static int hash(long l) {
-		int h = 1;
-		
+		int h = DEFAULT_SEED;
+		final int[] table = rtable;
 		for(int p = 0, s = 56; p < 8; p++, s -= 8)
-			h = (134775813 * h) ^ rtable[(int)((p + (l >>> s)) & 0xFF)];
-		
+			h = (134775813 * h) ^ table[(int)((p + (l >>> s)) & 0xFF)];
 		return h;
 	}
 	
@@ -138,12 +136,13 @@ public class ZedmeeHash32 {
 	}
 	
 	public static int hash(CharSequence cs) {
-		int h = 1;
+		int h = DEFAULT_SEED;
 		final int len = cs.length();
+		final int[] table = rtable;
 		for(int i = 0; i < len; i++) {
 			char ch = cs.charAt(i);
-			h = (134775813 * h) ^ rtable[((i << 1) + ch) & 0xFF];
-			h = (134775813 * h) ^ rtable[(1 + (i << 1) + (ch >>> 8)) & 0xFF];
+			h = (134775813 * h) ^ table[((i << 1) + ch) & 0xFF];
+			h = (134775813 * h) ^ table[(1 + (i << 1) + (ch >>> 8)) & 0xFF];
 		}
 		return h;
 	}
