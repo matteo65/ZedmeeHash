@@ -25,7 +25,7 @@ Zedmee belongs to the family of dispersing hash functions which always guarantee
 
 Data input                                                  |#Hashes   | Zedmee   | Murmur3 |    XX   |  Rabin
 ------------------------------------------------------------|----------|----------|---------|---------|---------
-Numbers as strings from "0" to "999999999"                  |1,000,000,000| 107,855,532|107,822,463|110,287,893|365,950,432
+Numbers as strings from "0" to "999999999"                  |1,000,000,000|107,902,711|107,822,463|110,287,893|365,950,432
 File Resource words_en.txt                                  | 65,503    |         0|        0|        0|       14
 File Resource words_es.txt                                  | 74,571    |         0|        2|        0|       38
 File Resource words_it.txt                                  |117,558    |         0|        0|        2|       28
