@@ -21,7 +21,7 @@ ZedmeeHash32.hash()
 ## Minimum number of collisions
 Zedmee belongs to the family of dispersing hash functions which always guarantees a very low number of collisions for each reasonably large number of values.  
 
-### 32-bit hash functions: numner of collisions for small data arrays (1-4 bytes)
+#### 32-bit hash functions: numner of collisions for small data arrays (1-4 bytes)
 
 Data input                                                            |   #Hashes   |  Zedmee  | Murmur3|    XX  |  Rabin
 --------------------------------------------------------------------- |-------------|----------|--------|--------|--------
