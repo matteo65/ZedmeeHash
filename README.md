@@ -91,7 +91,7 @@ Like other non-cryptographic functions, its security depends on the secrecy of t
 It is simple, straightforward and can be easily written in virtually any programming language.  
 Currently C and Java versions are for Big Endian architecture but mirror functions for Little Endian can be easily written.  
 
-## About comparation functions
+## About comparison functions
 
 ## Conclusion
 Zedmee demonstrates to have a quality of the dispersion of values close to a Universal Hash Function, and shares this quality with Murmur3, while XX has a slightly lower quality as it has a distribution that in some cases differs (positively or negatively) from a random spread.  
