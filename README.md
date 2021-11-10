@@ -3,7 +3,7 @@ Strong, fast, non-cryptographic 32/64 hash function
 
 Zedmee is based on the use of a table of 256 randomly calculated numbers. It uses 2 algorithms, one for data up to 4 bytes long for the 32-bit version or 8 bytes for the 64-bit version, the other for data with a longer length.  
 
-The first algorithm is based on bitwise operations and values substitution, the second one is a multiplicative hash function, it belongs to the family of LCG (linear congruential generator) like the hash function of java, and it uses the preloaded random table and uses some tricks to eliminate the defects of the LCG functions.  
+The first algorithm is based on bitwise operations and values substitution, the second one is a multiplicative hash function, it belongs to the family of LCG (linear congruential generator) like the hash function of java, also it uses the preloaded random table and uses some tricks to eliminate the defects of the LCG functions.  
 
 ```java
 	public static int hash(final byte[] data, final int pos, final int length, final int seed) {
@@ -80,6 +80,9 @@ Binary 24 bytes [b,b\*3,b\*5,b\*7,b\*11,b\*13], b from 00000000 to 05F5E0FF     
 Strings 48 length "ssssss", s from "00000000" to "05F5E0FF"                            |100,000,000| 1,156,381 | 1,156,254| 1,155,854|22,595,936
 
 
+## Speed
+
+
 ## Vulnerability
 Zedmee, like most non-cryptographic functions, is non-secure because it is not specifically designed to be difficult to reverse by an adversary, making it unsuitable for cryptographic purposes. Its use is instead recommended in all other contexts where hash functions are used.  
 Like other non-cryptographic functions, its security depends on the secrecy of the possibly used seed.  
@@ -87,6 +90,8 @@ Like other non-cryptographic functions, its security depends on the secrecy of t
 ## Portability
 It is simple, straightforward and can be easily written in virtually any programming language.  
 Currently C and Java versions are for Big Endian architecture but mirror functions for Little Endian can be easily written.  
+
+## About comparation functions
 
 ## Conclusion
 Zedmee demonstrates to have a quality of the dispersion of values close to a Universal Hash Function, and shares this quality with Murmur3, while XX has a slightly lower quality as it has a distribution that in some cases differs (positively or negatively) from a random spread.  
