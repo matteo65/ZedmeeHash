@@ -1,9 +1,9 @@
 # ZedmeeHash 32/64
 Strong, fast, non-cryptographic 32/64 hash function  
 
-Zedmee is based on the use of a table of 256 randomly calculated numbers. It uses 2 algorithms, one for data up to 4 bytes long for the 32-bit version or 8 bytes for the 64-bit version, the other for data with a longer length.  
+Zedmee is based on the use of a table of randomly calculated numbers. It uses 2 algorithms, one for data up to 4 bytes long for the 32-bit version or 8 bytes for the 64-bit version, the other for data with a longer length.  
 
-The first algorithm is based on bitwise operations and values substitution, the second one is a multiplicative hash function, it belongs to the family of LCG (linear congruential generator) like the hash function of java, also it uses the preloaded random table and uses some tricks to eliminate the defects of the LCG functions.  
+The first algorithm is based on bitwise operations and values substitution, the second one is a multiplicative hash function, it belongs to the family of LCG (linear congruential generator) like the hash function of java, also it uses the preloaded random table and uses some tricks to eliminate the defects of the LCG functions: their distribution is not perfectly uniform, but follows some patterns that are highlighted through the representation on a two-dimensional map.  
 
 ```java
 	public static int hash(final byte[] data, final int pos, final int length, final int seed) {
@@ -29,8 +29,6 @@ The first algorithm is based on bitwise operations and values substitution, the 
 ```
   
 The preloaded table contains 256 random values (one for each byte) generated with the algorithm lfsr113 (for 32 bit) or lfsr258 (for 64 bit) in the initialization phase.  
-
-The use of the random table allows to eliminate the main defect of the LCG functions: their distribution is not perfectly uniform, but follows some patterns that are highlighted through the representation on a two-dimensional map.  
 
 Through the selection of the particular seeds, numerical recipes and other small tricks, zedmee is able to achieve the quality of the best hash functions, maintaining the simplicity and the speed of the LCGs.  
 
