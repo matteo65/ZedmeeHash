@@ -6,26 +6,53 @@ Zedmee is based on the use of a table of randomly calculated numbers. It uses 2 
 The first algorithm is based on bitwise operations and values substitution, the second one is a multiplicative hash function, it belongs to the family of LCG (linear congruential generator) like the hash function of java, also it uses the preloaded random table and uses some tricks to eliminate the defects of the LCG functions: their distribution is not perfectly uniform, but follows some patterns that are highlighted through the representation on a two-dimensional map.  
 
 ```java
-	public static int hash(final byte[] data, final int pos, final int length, final int seed) {
+public static int hash(final byte[] data, final int pos, final int length, final int seed) {
+	int b1, b2, b3, b4;
+	final int[] table = rtable;
+	switch(length) {
+	case 1:
+		b1 = rtable0;
+		b2 = rtable1;
+		b3 = rtable2;
+		b4 = table[data[pos] & 0xFF];
+		break;
+		
+	case 2:
+		b1 = rtable1;
+		b2 = rtable2;
+		b3 = table[data[pos] & 0xFF];
+		b4 = table[data[pos + 1] & 0xFF];
+		break;
+		
+	case 3:
+		b1 = rtable2;
+		b2 = table[data[pos] & 0xFF];
+		b3 = table[data[pos + 1] & 0xFF];
+		b4 = table[data[pos + 2] & 0xFF];
+		
+		break;
+		
+	case 4:
+		b1 = table[data[pos] & 0xFF];
+		b2 = table[data[pos + 1] & 0xFF];
+		b3 = table[data[pos + 2] & 0xFF];
+		b4 = table[data[pos + 3] & 0xFF];
+		break;
+		
+	default:
 		final int len = pos + length;
-		final int[] table = rtable;
-		if(length < 5) {
-			int b4 = table[data[len - 1] & 0xFF];
-			int b3 = (length < 2) ? rtable0 : table[data[len - 2] & 0xFF];
-			int b2 = (length < 3) ? rtable0 : table[data[len - 3] & 0xFF];
-			int b1 = (length < 4) ? rtable0 : table[data[len - 4] & 0xFF];
-			int x = b3 ^ b4;
-			int y = b1 ^ b2;
-			return seed ^ (((b2 ^ x) << 24) |
-					(((b1 ^ x) << 16) & 0x00FF0000) |
-					(((y ^ b4) << 8) & 0x0000FF00) |
-					((y ^ b3) & 0x000000FF));
-		}
 		int h = seed;
 		for(int i = pos; i < len; i++)
 			h = (h * 134775813) ^ table[(i + data[i]) & 0xFF];
 		return h;
 	}
+	int x = b3 ^ b4;
+	int y = b1 ^ b2;
+	return seed ^ (((b2 ^ x) << 24) |
+	              (((b1 ^ x) << 16) & 0x00FF0000) |
+	              (((y ^ b4) << 8) & 0x0000FF00) |
+	              ((y ^ b3) & 0x000000FF));		
+}
 ```
   
 The preloaded table contains 256 random values (one for each byte) generated with the algorithm lfsr113 (for 32 bit) or lfsr258 (for 64 bit) in the initialization phase.  
