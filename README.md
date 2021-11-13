@@ -110,7 +110,7 @@ Strings 48 length "ssssss", s from "00000000" to "05F5E0FF"                     
 
 ## Vulnerability
 Zedmee, like most non-cryptographic functions, is non-secure because it is not specifically designed to be difficult to reverse by an adversary, making it unsuitable for cryptographic purposes. Its use is instead recommended in all other contexts where hash functions are used.  
-Like other non-cryptographic functions, its security depends on the secrecy of the possibly used seed.  
+Like other non-cryptographic functions, its security depends on the secrecy of the possibly used seed, but unlike the other algorithms, zedmee allows you to initialize the preloaded table with four own 32-bit seeds (or five 64-bit seeds for version 64) which make zedmee much more secure than the others functions.  
 
 ## Portability
 It is simple, straightforward and can be easily written in virtually any programming language.  
