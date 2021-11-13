@@ -29,7 +29,6 @@ public static int hash(final byte[] data, final int pos, final int length, final
 		b2 = table[data[pos] & 0xFF];
 		b3 = table[data[pos + 1] & 0xFF];
 		b4 = table[data[pos + 2] & 0xFF];
-		
 		break;
 		
 	case 4:
@@ -46,8 +45,10 @@ public static int hash(final byte[] data, final int pos, final int length, final
 			h = (h * 134775813) ^ table[(i + data[i]) & 0xFF];
 		return h;
 	}
+	
 	int x = b3 ^ b4;
 	int y = b1 ^ b2;
+	
 	return seed ^ (((b2 ^ x) << 24) |
 	              (((b1 ^ x) << 16) & 0x00FF0000) |
 	              (((y ^ b4) << 8) & 0x0000FF00) |
