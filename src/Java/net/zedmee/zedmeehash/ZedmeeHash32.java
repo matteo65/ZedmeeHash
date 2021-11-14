@@ -44,7 +44,7 @@ public class ZedmeeHash32 {
 	public static final int DEFAULT_SEED = 0;
 	
 	static {
-		init(-714727681, -1283802615, 25595457, -498285495);
+		init(0xD5661EFF, 0xB37ABA09, 0x01868E41, 0xE24CC449);
 	}
 	
 	/**
@@ -57,7 +57,7 @@ public class ZedmeeHash32 {
 	public static void init(int seed1, int seed2, int seed3, int seed4) {
 		// lfsr113 pseudo random number generator
 		// Author: Pierre L'Ecuyer
-		// The initial (uint32) seed1, seed2, seed33, seed4  MUST be larger than
+		// The initial (uint32) seed1, seed2, seed3, seed4  MUST be larger than
 		// 1, 7, 15, and 127 respectively!!!
 
 		if((seed1 & 0xFFFFFFFE) == 0) {
