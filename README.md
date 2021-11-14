@@ -119,8 +119,9 @@ It is simple, straightforward and can be easily written in virtually any program
 Currently C and Java versions are for Big Endian architecture but mirror functions for Little Endian can be easily written.  
 
 ## About comparison functions
+The family of 32/64 bit hash functions is very numerous: SuperFastHash, FNV, djb2, PJW, Murmur
 
 ## Conclusion
-Zedmee demonstrates to have a quality of the dispersion of values close to a Universal Hash Function, and shares this quality with Murmur3, while XX has a slightly lower quality as it has a distribution that in some cases differs (positively or negatively) from a random spread.  
+Zedmee demonstrates to have a quality of the dispersion of values close to an ideal Universal Hash Function, and shares this quality with Murmur3, while XX has a slightly lower quality as it has a distribution that in some cases differs (positively or negatively) from a random spread.  
 In terms of speed, XX is certainly the best performing, even in the non-parallel version, but zedmee is only slightly lower and certainly faster than all other hash functions of similar quality.  
 Therefore it can be said that zedmee combines maximum distribution performance, speed and simplicity which make it an ideal function for non-cryptographic hashing.  
