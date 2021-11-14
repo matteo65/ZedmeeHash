@@ -78,32 +78,33 @@ Zedmee belongs to the family of dispersing hash functions which always guarantee
 Data input                                                            |   #Hashes   |  Zedmee  | Murmur3|    XX  |  Rabin
 --------------------------------------------------------------------- |-------------|----------|--------|--------|--------
 All 4-bytes values 00000000-FFFFFFFF                                  |4,294,967,296|         0|       0|       0|      0
-1 to 4 bytes values 00-FF, 0100-FFFF, 010000-FFFFFF, 01000000-FFFFFFFF|4,294,967,296|         0|16,711,655|16,711,713| 0
+1 to 4 bytes values 00-FF, 0100-FFFF, 010000-FFFFFF, 01000000-FFFFFFFF|4,294,967,296|16,776,960|16,711,655|16,711,713| 0
 1 to 4 bytes values 00-FF, 0000-FFFF, 000000-FFFFFF, 00000000-FFFFFFFF|4,311,810,304|16,843,008|16,843,008|16,843,008|16,843,008
 
 #### 32-bit hash functions: number of collisions for strings (ASCII 1 byte per char)
 
-Data input                                                  |#Hashes   | Zedmee | Murmur3 |   XX   |  Rabin
-------------------------------------------------------------|----------|--------|---------|--------|---------
-Numbers as strings from "0" to "999999999"                  |1,000,000,000|107,902,722|107,822,463|110,287,893|365,950,432
-File Resource words_en.txt                                  | 65,503   |       0|        0|       0|      14
-File Resource words_es.txt                                  | 74,571   |       0|        2|       0|      38
-File Resource words_it.txt                                  |117,558   |       0|        0|       2|      28
-File Resource words_latin.txt                               | 80,007   |       0|        1|       1|      34
-File Resource words_en_es_it_latin.txt                      |315,198   |       4|        9|       9|     271
-File Resource words_and_numbers.txt                         |429,187   |       9|       20|      19|     251
-File Resource first_million_primes.txt                      |1,000,000 |     114|      118|      85|       0
-File Resource random_64bit_signed_numbers.txt               |1,000,000 |     112|      110|     143|     122
+Data input                                                  |   #Hashes   | Zedmee | Murmur3 |   XX   |  Rabin
+------------------------------------------------------------|-------------|--------|---------|--------|---------
+Numbers as strings from "0" to "999999999"                  |1,000,000,000|107,844,089|107,822,463|110,287,893|365,950,432
+File Resource words_en.txt                                  |    65,503   |       0|        0|       0|      14
+File Resource words_es.txt                                  |    74,571   |       0|        2|       0|      38
+File Resource words_it.txt                                  |   117,558   |       0|        0|       2|      28
+File Resource words_latin.txt                               |    80,007   |       0|        1|       1|      34
+File Resource words_en_es_it_latin.txt                      |   315,198   |       0|        9|       9|     271
+File Resource words_and_numbers.txt                         |   429,187   |       7|       20|      19|     251
+File Resource first_million_primes.txt                      |   1,000,000 |     116|      118|      85|       0
+File Resource random_64bit_signed_numbers.txt               |   1,000,000 |     111|      110|     143|     122
 
 #### 32-bit hash functions: number of collisions for data input from [19-48] bytes
 
 Data input                                                                             | #Hashes   |  Zedmee   | Murmur3  |     XX   | Rabin
 ---------------------------------------------------------------------------------------|-----------|-----------|----------|----------|----------
-Number as strings from "1234567890123456789" to "1234567890223456789"                  |100,000,000| 1,155,556 | 1,155,789|   808,693|         0      
-Strings from "abcdefg1234567890123456789hijklmn" to "abcdefg1234567890223456789hijklmn"|100,000,000| 1,155,570 | 1,152,600| 1,037,151|         0  
-Binary 24 bytes [b,b,b,b,b,b], b from 00000000 to 05F5E0FF                             |100,000,000| 1,156,587 | 1,154,653| 1,411,483|         0
-Binary 24 bytes [b,b\*3,b\*5,b\*7,b\*11,b\*13], b from 00000000 to 05F5E0FF            |100,000,000| 1,156,584 | 1,154,542| 1,160,003| 1,150,862
-Strings 48 length "ssssss", s from "00000000" to "05F5E0FF"                            |100,000,000| 1,156,381 | 1,156,254| 1,155,854|22,595,936
+Number as strings from "1234567890123456789" to "1234567890223456789"                  |100,000,000| 1,154,366 | 1,155,789|   808,693|         0      
+Strings from "abcdefg1234567890123456789hijklmn" to "abcdefg1234567890223456789hijklmn"|100,000,000| 1,153,317 | 1,152,600| 1,037,151|         0  
+Binary 24 bytes [b,b,b,b,b,b], b from 00000000 to 05F5E0FF                             |100,000,000| 1,154,552 | 1,154,653| 1,411,483|         0
+Binary 24 bytes [b,b\*3,b\*5,b\*7,b\*11,b\*13], b from 00000000 to 05F5E0FF            |100,000,000| 1,155,340 | 1,154,542| 1,160,003| 1,150,862
+Strings 48 length "ssssss", s from "00000000" to "05F5E0FF"                            |100,000,000| 1,156,789 | 1,156,254| 1,155,854|22,595,936
+Random 32 bytes [rrrrrrrr], r from 00000000 to FFFFFFFF random                         |100,000,000| 1,153,104 | 1,156,450| 1,154,307| 1,156,219
 
 
 ## Speed
