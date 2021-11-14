@@ -1,5 +1,5 @@
 # ZedmeeHash 32/64
-Strong, fast, non-cryptographic 32/64 hash function  
+Strong, fast, simple, non-cryptographic 32/64 hash function  
 
 Zedmee is based on the use of a table of randomly calculated numbers. It uses 2 algorithms, one for data up to 4 bytes long for the 32-bit version or 8 bytes for the 64-bit version, the other for data with a longer length.  
 
