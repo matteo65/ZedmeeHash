@@ -3,7 +3,7 @@ Strong, fast, simple, non-cryptographic 32/64 hash function
 
 Zedmee is based on the use of a table of randomly calculated numbers. It uses two algorithms, thw first for data up to 4 bytes long for the 32-bit version (8 bytes for the 64-bit version), the second for data with a longer length.  
 
-The first algorithm is based on bitwise operations and values substitution, the second one is a multiplicative hash function, it belongs to the family of LCG (linear congruential generator) like the hash function of java, also it uses the preloaded random table and uses some tricks to eliminate the defects of the LCG functions: their distribution is not perfectly uniform, but follows some patterns that are highlighted through the representation on a two-dimensional map.  
+The first algorithm is based on bitwise operations and values substitution, the second one is a multiplicative hash function, it belongs to the family of LCG (linear congruential generator) like the hash function of java, also it uses the preloaded random table and uses some tricks to eliminate the defects of the LCG functions: their distribution is not perfectly uniform, but follows some patterns that are highlighted through the representation on a two-dimensional diagram.  
 
 ```java
 public static int hash(final byte[] data, final int pos, final int length, final int seed) {
