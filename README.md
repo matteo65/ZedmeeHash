@@ -22,7 +22,7 @@ The preloaded table contains 256 random values (one for each byte) generated wit
 
 Through the selection of the particular seeds, numerical recipes and other small tricks, zedmee is able to achieve the quality of the best hash functions, maintaining the simplicity and the speed of the LCGs.  
 
-## Uniform and chaotic distribution of hash values (dispersion)
+## Uniform distribution of hash values (diffusion)
 Zedmee has an absolutely uniform, chaotic distribution of hash values independent of the number, length and type of input values.  
 Even minimal differences (1 bit) in the input values produce very different hash values.  
 
