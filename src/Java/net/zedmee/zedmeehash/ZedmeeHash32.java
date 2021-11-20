@@ -87,7 +87,7 @@ public class ZedmeeHash32 {
 			seed4 = (((seed4 & 0xFFFFFF80) << 13) ^ b);
 			
 			table[i] = seed1 ^ seed2 ^ seed3 ^ seed4;
-	    }
+	    	}
 		
 		return table;
 	}
