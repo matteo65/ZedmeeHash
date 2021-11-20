@@ -6,53 +6,15 @@ Zedmee is based on the use of a table of randomly calculated numbers. It uses tw
 The first algorithm is based on bitwise operations and values substitution, the second one is a multiplicative hash function, it belongs to the family of LCG (linear congruential generator) like the hash function of java, also it uses the preloaded random table and uses some tricks to eliminate the defects of the LCG functions: their distribution is not perfectly uniform, but follows some patterns that are highlighted through the representation on a two-dimensional diagram.  
 
 ```java
-public static int hash(final byte[] data, final int pos, final int length, final int seed) {
-	int b1, b2, b3, b4;
-	final int[] table = rtable;
-	switch(length) {
-	case 1:
-		b1 = rtable0;
-		b2 = rtable1;
-		b3 = rtable2;
-		b4 = table[data[pos] & 0xFF];
-		break;
-		
-	case 2:
-		b1 = rtable1;
-		b2 = rtable2;
-		b3 = table[data[pos] & 0xFF];
-		b4 = table[data[pos + 1] & 0xFF];
-		break;
-		
-	case 3:
-		b1 = rtable2;
-		b2 = table[data[pos] & 0xFF];
-		b3 = table[data[pos + 1] & 0xFF];
-		b4 = table[data[pos + 2] & 0xFF];
-		break;
-		
-	case 4:
-		b1 = table[data[pos] & 0xFF];
-		b2 = table[data[pos + 1] & 0xFF];
-		b3 = table[data[pos + 2] & 0xFF];
-		b4 = table[data[pos + 3] & 0xFF];
-		break;
-		
-	default:
-		final int len = pos + length;
-		int h = seed;
-		for(int i = pos; i < len; i++)
-			h = (h * 134775813) ^ table[(i + data[i]) & 0xFF];
-		return h;
+public static int hash(final byte[] data, int pos, final int length, final int seed, final int[] table) {
+	int h = seed;
+	final int len = pos + length;
+	int c = 0;
+	for(int i = pos; i < len; i++) {
+		h += h << 2; 
+		h ^= table[(c++ + data[i]) & 0xFF];
 	}
-	
-	int x = b3 ^ b4;
-	int y = b1 ^ b2;
-	
-	return seed ^ (((b2 ^ x) << 24) |
-	              (((b1 ^ x) << 16) & 0x00FF0000) |
-	              (((y ^ b4) << 8) & 0x0000FF00) |
-	              ((y ^ b3) & 0x000000FF));		
+	return h;
 }
 ```
   
@@ -85,26 +47,26 @@ All 4-bytes values 00000000-FFFFFFFF                                  |4,294,967
 
 Data input                                                  |   #Hashes   | Zedmee | Murmur3 |   XX   |  Rabin
 ------------------------------------------------------------|-------------|--------|---------|--------|---------
-Numbers as strings from "0" to "999999999"                  |1,000,000,000|107,844,089|107,822,463|110,287,893|365,950,432
+Numbers as strings from "0" to "999999999"                  |1,000,000,000|107,946,574|107,822,463|110,287,893|365,950,432
 File Resource words_en.txt                                  |    65,503   |       0|        0|       0|      14
 File Resource words_es.txt                                  |    74,571   |       0|        2|       0|      38
 File Resource words_it.txt                                  |   117,558   |       0|        0|       2|      28
 File Resource words_latin.txt                               |    80,007   |       0|        1|       1|      34
 File Resource words_en_es_it_latin.txt                      |   315,198   |       0|        9|       9|     271
-File Resource words_and_numbers.txt                         |   429,187   |       7|       20|      19|     251
-File Resource first_million_primes.txt                      |   1,000,000 |     116|      118|      85|       0
-File Resource random_64bit_signed_numbers.txt               |   1,000,000 |     111|      110|     143|     122
+File Resource words_and_numbers.txt                         |   429,187   |       4|       20|      19|     251
+File Resource first_million_primes.txt                      |   1,000,000 |     104|      118|      85|       0
+File Resource random_64bit_signed_numbers.txt               |   1,000,000 |     109|      110|     143|     122
 
 #### 32-bit hash functions: number of collisions for data input from [19-48] bytes
 
 Data input                                                                             | #Hashes   |  Zedmee   | Murmur3  |     XX   | Rabin
 ---------------------------------------------------------------------------------------|-----------|-----------|----------|----------|----------
-Number as strings from "1234567890123456789" to "1234567890223456789"                  |100,000,000| 1,154,366 | 1,155,789|   808,693|         0      
-Strings from "abcdefg1234567890123456789hijklmn" to "abcdefg1234567890223456789hijklmn"|100,000,000| 1,153,317 | 1,152,600| 1,037,151|         0  
-Binary 24 bytes [b,b,b,b,b,b], b from 00000000 to 05F5E0FF                             |100,000,000| 1,154,552 | 1,154,653| 1,411,483|         0
-Binary 24 bytes [b,b\*3,b\*5,b\*7,b\*11,b\*13], b from 00000000 to 05F5E0FF            |100,000,000| 1,155,340 | 1,154,542| 1,160,003| 1,150,862
-Strings 48 length "ssssss", s from "00000000" to "05F5E0FF"                            |100,000,000| 1,156,789 | 1,156,254| 1,155,854|22,595,936
-Random 32 bytes [rrrrrrrr], r from 00000000 to FFFFFFFF random                         |100,000,000| 1,153,104 | 1,156,450| 1,154,307| 1,156,219
+Number as strings from "1234567890123456789" to "1234567890223456789"                  |100,000,000| 1,152,470 | 1,155,789|   808,693|         0      
+Strings from "abcdefg1234567890123456789hijklmn" to "abcdefg1234567890223456789hijklmn"|100,000,000| 1,153,146 | 1,152,600| 1,037,151|         0  
+Binary 24 bytes [b,b,b,b,b,b], b from 00000000 to 05F5E0FF                             |100,000,000| 1,156,639 | 1,154,653| 1,411,483|         0
+Binary 24 bytes [b,b\*3,b\*5,b\*7,b\*11,b\*13], b from 00000000 to 05F5E0FF            |100,000,000| 1,155,495 | 1,154,542| 1,160,003| 1,150,862
+Strings 48 length "ssssss", s from "00000000" to "05F5E0FF"                            |100,000,000| 1,156,397 | 1,156,254| 1,155,854|22,595,936
+Random 32 bytes [rrrrrrrr], r from 00000000 to FFFFFFFF random                         |100,000,000| 1,153,728 | 1,156,450| 1,154,307| 1,156,219
 
 
 ## Speed
