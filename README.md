@@ -35,11 +35,12 @@ Zedmee belongs to the family of dispersing hash functions which always guarantee
 
 #### 32-bit hash functions: number of collisions for small data arrays (1-4 bytes)
 
-Data input                                                            |   #Hashes   |  Zedmee  | Murmur3|    XX  |  Rabin
---------------------------------------------------------------------- |-------------|----------|--------|--------|--------
-All 4-bytes values 00000000-FFFFFFFF                                  |4,294,967,296|         0|       0|       0|      0
-1 to 4 bytes values 00-FF, 0100-FFFF, 010000-FFFFFF, 01000000-FFFFFFFF|4,294,967,296|16,776,960|16,711,655|16,711,713| 0
-1 to 4 bytes values 00-FF, 0000-FFFF, 000000-FFFFFF, 00000000-FFFFFFFF|4,311,810,304|16,843,008|16,843,008|16,843,008|16,843,008
+Data input                                                            |  #Hashes  |  Zedmee  | Murmur3|    XX  |  Rabin
+------------------------------------------------------ |-----------|----------|--------|--------|--------
+4-bytes values 00000000-05F5E0FF                       |100,000,000| 1,151,677|       0|       0|      0
+4-bytes values 00000000-FFFFFFFF                       |1,000,000,000|         0|       0|       0|      0
+1 to 3 bytes values 00-FF, 0100-FFFF, 010000-FFFFFF    |4,294,967,296|16,776,960|16,711,655|16,711,713| 0
+1 to 3 bytes values 00-FF, 0000-FFFF, 000000-FFFFFF    |4,311,810,304|16,843,008|16,843,008|16,843,008|16,843,008
 
 #### 32-bit hash functions: number of collisions for strings (ASCII 1 byte per char)
 
