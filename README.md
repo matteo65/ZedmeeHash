@@ -1,9 +1,11 @@
 # ZedmeeHash 32/64
 Strong, fast, simple, non-cryptographic 32/64 hash function  
 
-Zedmee is based on the use of a table of randomly calculated numbers. It uses two algorithms, thw first for data up to 4 bytes long for the 32-bit version (8 bytes for the 64-bit version), the second for data with a longer length.  
+Zedmee is based on the use of a table of random numbers (lookup table). The algorithm is very simple and is uses only bitwise and adding operations.  
 
-The first algorithm is based on bitwise operations and values substitution, the second one is a multiplicative hash function, it belongs to the family of LCG (linear congruential generator) like the hash function of java, also it uses the preloaded random table and uses some tricks to eliminate the defects of the LCG functions: their distribution is not perfectly uniform, but follows some patterns that are highlighted through the representation on a two-dimensional diagram.  
+The lookup table contains 256 ramdom values (one for each byte); by default zedmee uses a table generated with the lfsr113 algorithm for the 32-bit version or lfsr258 for the 64 bit version, but any other random table can be used and it is also possible to specify a seed.  
+
+The result may seem like a trivial function, but the characteristics and quality of the result are equal to if not superior to the best hash functions.  
 
 ```java
 public static int hash(final byte[] data, int pos, final int length, final int seed, final int[] table) {
@@ -16,11 +18,7 @@ public static int hash(final byte[] data, int pos, final int length, final int s
 	}
 	return h;
 }
-```
-  
-The preloaded table contains 256 random values (one for each byte) generated with the algorithm lfsr113 (for 32 bit) or lfsr258 (for 64 bit) in the initialization phase.  
-
-Through the selection of the particular seeds, numerical recipes and other small tricks, zedmee is able to achieve the quality of the best hash functions, maintaining the simplicity and the speed of the LCGs.  
+``` 
 
 ## Uniform distribution of hash values (diffusion)
 Zedmee has an absolutely uniform, chaotic distribution of hash values independent of the number, length and type of input values.  
