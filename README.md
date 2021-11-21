@@ -1,7 +1,7 @@
 # ZedmeeHash 32/64
-Strong, fast, simple, non-cryptographic 32/64 hash function  
+Strong, fast, simple, non-cryptographic 32/64 universal hash function  
 
-Zedmee is based on the use of a table of random numbers (lookup table). The algorithm is very simple and is uses only bitwise, shift and adding operations.  
+Zedmee is based on the use of a table of random numbers (lookup table). The mathematical properties of distribution and number of collisions are typical of Universal Hashing. The algorithm is very simple and is uses only bitwise, shift and adding operations.  
 
 The lookup table contains 256 ramdom values (one for each byte); by default zedmee uses a table generated with the lfsr113 algorithm for the 32-bit version or lfsr258 for the 64 bit version, but any other random table can be used and it is also possible to specify a seed.  
 
@@ -29,7 +29,8 @@ It also has a good Avalanche Effect property: even a minimal differences (1 bit)
 ![Alt Text](https://raw.githubusercontent.com/matteo65/ZedmeeHash/main/Resource/zmh_distributions.png)
 
 ## Minimum number of collisions
-Zedmee belongs to the family of dispersing hash functions which always guarantees a very low number of collisions for each reasonably large number of values.  
+Zedmee belongs to the family of universal hash functions which always guarantees a very low number of collisions for each reasonably large number of values.  
+The number of expected collisions is given by the formula n-m*(1-((m-1)/m)^n) where n is the number of values, m is 2^32 or 2^64.  
 
 #### 32-bit hash functions: number of collisions for small data arrays (1-4 bytes)
 
