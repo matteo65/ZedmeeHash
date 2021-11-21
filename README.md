@@ -30,7 +30,7 @@ It also has a good Avalanche Effect property: even a minimal differences (1 bit)
 
 ## Minimum number of collisions
 Zedmee belongs to the family of universal hash functions which always guarantees a very low number of collisions for each reasonably large number of values.  
-The number of expected collisions is given by the formula **n-m*(1-((m-1)/m)^n)** where n is the number of values, m is 2^32 or 2^64.  
+The number of expected collisions is given by the formula _n-m*(1-((m-1)/m)^n)_ where n is the number of values, m is 2^32 or 2^64.  
 
 #### 32-bit hash functions: number of collisions for small data arrays (1-4 bytes)
 
