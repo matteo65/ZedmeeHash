@@ -12,7 +12,7 @@ public static int hash(final byte[] data, int pos, int length, final int seed, f
 	int h = seed;
 	while(length > 0) {
 		h += h << 2; 
-		h ^= table[(length-- + data[pos++]) & 0xFF];
+		h ^= table[(--length + data[pos++]) & 0xFF];
 	}
 	return h;
 }
