@@ -5,16 +5,16 @@ Zedmee is based on the use of a table of random numbers (lookup table). The algo
 
 The lookup table contains 256 ramdom values (one for each byte); by default zedmee uses a table generated with the lfsr113 algorithm for the 32-bit version or lfsr258 for the 64 bit version, but any other random table can be used and it is also possible to specify a seed.  
 
-The result may seem like a trivial function, but the characteristics and quality of the result are equal to if not superior to the best hash functions.  
+The result may seem like a trivial algorithm, as a multiplicative hash function, but the characteristics and quality of the result are equal to if not superior to the best and complex hash functions.  
 
 ```java
 public static int hash(final byte[] data, int pos, final int length, final int seed, final int[] table) {
 	int h = seed;
 	final int len = pos + length;
-	int c = 0;
+	int s = 0;
 	for(int i = pos; i < len; i++) {
 		h += h << 2; 
-		h ^= table[(c++ + data[i]) & 0xFF];
+		h ^= table[(s++ + data[i]) & 0xFF];
 	}
 	return h;
 }
