@@ -8,13 +8,11 @@ The lookup table contains 256 ramdom values (one for each byte); by default zedm
 The result may seem like a trivial algorithm, as a multiplicative hash function, but the characteristics and quality of the result are equal to if not superior to the best and complex hash functions.  
 
 ```java
-public static int hash(final byte[] data, int pos, final int length, final int seed, final int[] table) {
+public static int hash(final byte[] data, int pos, int length, final int seed, final int[] table) {
 	int h = seed;
-	final int len = pos + length;
-	int s = 0;
-	for(int i = pos; i < len; i++) {
+	while(length > 0) {
 		h += h << 2; 
-		h ^= table[(s++ + data[i]) & 0xFF];
+		h ^= table[(length-- + data[pos++]) & 0xFF];
 	}
 	return h;
 }
