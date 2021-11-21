@@ -22,7 +22,7 @@ public static int hash(final byte[] data, int pos, final int length, final int s
 
 ## Uniform distribution of hash values (diffusion)
 Zedmee has an absolutely uniform, chaotic distribution of hash values independent of the number, length and type of input values.  
-Even a minimal differences (1 bit) of input values produces very different hash values.  
+It also has a good Avalanche Effect property: even a minimal differences (1 bit) of input values produces very different hash values.  
 
 #### java.util.Arrays.hashCode()
 ![Alt Text](https://raw.githubusercontent.com/matteo65/ZedmeeHash/main/Resource/java_hash.png)
