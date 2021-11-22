@@ -35,7 +35,6 @@ The number of expected collisions is given by the formula _n-m*(1-((m-1)/m)^n)_ 
 #### 32-bit hash functions: number of collisions for small data arrays (1-4 bytes)
 
 |Data input                                             |  #Hashes  | Zedmee  | Murmur3|  XX | Rabin|
-|------------------------------------------------------ |-----------|---------|--------|-----|-------|
 |:---                                                   |       ---:|     ---:|    ---:| ---:| ---:|
 |4-bytes values 00000000-05F5E0FF                       |100,000,000|1,151,677|       0|    0|  0|
 |4-bytes values FA0A1F00-FFFFFFFF                       |100,000,000|1,152,546|       0|    0|  0|
