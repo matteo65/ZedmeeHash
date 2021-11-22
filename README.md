@@ -44,7 +44,6 @@ The number of expected collisions is given by the formula _n-m*(1-((m-1)/m)^n)_ 
 #### 32-bit hash functions: number of collisions for strings (ASCII 1 byte per char)
 
 Data input                                                  |   #Hashes   | Zedmee | Murmur3 |   XX   |  Rabin
-------------------------------------------------------------|-------------|--------|---------|--------|---------
 :---                                                        |       ---:  |    ---:|     ---:|    ---:|    ---:
 Numbers as strings from "0" to "999999999"                  |1,000,000,000|107,946,574|107,822,463|110,287,893|365,950,432
 File Resource words_en.txt                                  |    65,503   |       0|        0|       0|      14
@@ -59,7 +58,6 @@ File Resource random_64bit_signed_numbers.txt               |   1,000,000 |     
 #### 32-bit hash functions: number of collisions for data input from [19-48] bytes
 
 Data input                                                                             | #Hashes   |  Zedmee   | Murmur3  |     XX   | Rabin
----------------------------------------------------------------------------------------|-----------|-----------|----------|----------|----------
 :---                                                                                   |       ---:|       ---:|      ---:|      ---:|      ---:
 Number as strings from "1234567890123456789" to "1234567890223456789"                  |100,000,000| 1,152,470 | 1,155,789|   808,693|         0      
 Strings from "abcdefg1234567890123456789hijklmn" to "abcdefg1234567890223456789hijklmn"|100,000,000| 1,153,146 | 1,152,600| 1,037,151|         0  
