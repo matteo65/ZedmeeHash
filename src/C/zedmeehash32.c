@@ -37,42 +37,38 @@
 
 #include "zedmeehash32.h"
 
-
 /**
  * Generate and return a array of 256 uint32_t using the lfsr113 algorithm
  * It return a static array rewrited every call
  **/
 const uint32_t *gentable(uint32_t seed1, uint32_t seed2, uint32_t seed3, uint32_t seed4) 
 {
-		static uint32_t table[256];
+	static uint32_t table[256];
 		
-		// LFSR113 pseudo random number generator
-		// Author: Pierre L'Ecuyer
-		// The initial seeds seed1, seed2, seed3, seed4  MUST be larger than
-		// 1, 7, 15, and 127 respectively!!!
+	// LFSR113 pseudo random number generator
+	// Author: Pierre L'Ecuyer
+	// The initial seeds seed1, seed2, seed3, seed4  MUST be larger than
+	// 1, 7, 15, and 127 respectively!!!
 		
-		if(seed1 < 2) seed1 |= 0x02;
-				
-		if(seed2 < 8) seed2 |= 0x08;
-		
-		if(seed3 < 16) seed3 |= 0x10;
-		
-		if(seed4 < 128)	seed4 |= 0x80;
+	if(seed1 < 2) seed1 |= 0x02;
+	if(seed2 < 8) seed2 |= 0x08;
+	if(seed3 < 16) seed3 |= 0x10;
+	if(seed4 < 128)	seed4 |= 0x80;
 
-		for (int i = 0; i < 256; i++) {
-			int b = (((seed1 << 6) ^ seed1) >> 13);
-			seed1 = (((seed1 & 0xFFFFFFFE) << 18) ^ b);
-			b = (((seed2 << 2) ^ seed2) >> 27);
-			seed2 = (((seed2 & 0xFFFFFFF8) << 2) ^ b);
-			b = (((seed3 << 13) ^ seed3) >> 21);
-			seed3 = (((seed3 & 0xFFFFFFF0) << 7) ^ b);
-			b = (((seed4 << 3) ^ seed4) >> 12);
-			seed4 = (((seed4 & 0xFFFFFF80) << 13) ^ b);
+	for (int i = 0; i < 256; i++) {
+		int b = (((seed1 << 6) ^ seed1) >> 13);
+		seed1 = (((seed1 & 0xFFFFFFFE) << 18) ^ b);
+		b = (((seed2 << 2) ^ seed2) >> 27);
+		seed2 = (((seed2 & 0xFFFFFFF8) << 2) ^ b);
+		b = (((seed3 << 13) ^ seed3) >> 21);
+		seed3 = (((seed3 & 0xFFFFFFF0) << 7) ^ b);
+		b = (((seed4 << 3) ^ seed4) >> 12);
+		seed4 = (((seed4 & 0xFFFFFF80) << 13) ^ b);
 			
-			table[i] = seed1 ^ seed2 ^ seed3 ^ seed4;
-	    }
+		table[i] = seed1 ^ seed2 ^ seed3 ^ seed4;
+	}
 		
-		return table;
+	return table;
 }
 
 /**
