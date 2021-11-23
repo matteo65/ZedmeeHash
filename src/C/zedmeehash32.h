@@ -16,8 +16,8 @@ extern "C" {
 #define DEFAULT_TABLE_SEED_4   0xB709D577
 
 /**
- * Generate and return a static array of 256 uint32_t using
- * the lfsr113 algorithm
+ * Generate and return a array of 256 uint32_t using the lfsr113 algorithm
+ * It return a static array rewrited every call
  **/
 const uint32_t *gentable(uint32_t seed1, uint32_t seed2, uint32_t seed3, uint32_t seed4);
 
