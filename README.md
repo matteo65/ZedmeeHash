@@ -38,8 +38,8 @@ Data input                                             |  #Values  |#Expected Co
 :---                                                   |       ---:|                ---:|     ---:|    ---:| ---:
 4-bytes values 00000000-05F5E0FF                       |100,000,000|           1,155,170|1,154,926|       0|    0
 4-bytes values FA0A1F00-FFFFFFFF                       |100,000,000|           1,155,170|1,155,292|       0|    0
-1 to 3 bytes values 00-FF, 0100-FFFF, 010000-FFFFFF    | 16,777,216|                    |   32,990|       0|    0
-1 to 3 bytes values 00-FF, 0000-FFFF, 000000-FFFFFF    |           |                    |         |        |     
+1 to 3 bytes values 00-FF, 0100-FFFF, 010000-FFFFFF    | 16,777,216|              32,725|   32,284|       0|    0
+1 to 3 bytes values 00-FF, 0000-FFFF, 000000-FFFFFF    | 16,843,008|              32,982|   32,590|       0|    0  
 
 #### 32-bit : number of collisions for ASCII strings
 
