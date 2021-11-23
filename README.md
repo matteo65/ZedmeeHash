@@ -43,7 +43,7 @@ Data input                                             |  #Values  | Zedmee  | M
 
 #### 32-bit : number of collisions for ASCII strings
 
-Data input                                         |   #Vaues    |#Expct Colls|    Zedmee |   Murmur3 |     XX
+Data input                                         |   #Vaues    |#Expected Collisions|    Zedmee |   Murmur3 |     XX
 :---                                               |         ---:|        ---:|       ---:|       ---:|       ---:
 Numbers as strings from "0" to "999999999"         |1,000,000,000| 107,882,641|107,882,812|107,822,463|110,287,893
 File words_en.txt                                  |    65,503   |         0  |          0|          0|          0
