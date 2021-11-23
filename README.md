@@ -73,8 +73,8 @@ If you first know that the input values are limited to a subset of all possible 
 
 #### Number of collisions with different tables
 
-File input                   | #Values | #Expected Collisions | Collisions with Default table | Table            | Collisions 
-:---                         |     ---:|               :---   |                        :---   |    :---          |     :---
+File input                   | #Values | #Expected Collisions | Collisions with Default table | Table (genTable())| Collisions 
+:---                         |     ---:|               :---   |                        :---   |    :---           |     :---
 File first_million_primes.txt|1,000,000|                   116|                          110  |187298315, 1315206703, -898698574, -282484222| 75
 
 
