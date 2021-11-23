@@ -68,6 +68,15 @@ Binary 24 bytes [b,b\*3,b\*5,b\*7,b\*11,b\*13], b from 00000000 to 05F5E0FF     
 Strings 48 length "ssssss", s from "00000000" to "05F5E0FF"                            | 1,153,944 | 1,156,254| 1,155,854
 Random 32 bytes [rrrrrrrr], r from 00000000 to FFFFFFFF random                         | 1,155,668 | 1,156,450| 1,154,307
 
+## Reduction of collisions through the choice of an appropriate table
+If you first know that the input values are limited to a subset of all possible bytes, e.g. alphanumeric strings, printable ascii, digit only... you can use a computed table to minimize collisions with that particular input subset. A simple statistical program can be used to generate this table.  
+
+#### Number of collisions with different tables
+
+File input                   | #Values | #Expected Collisions | Collisions with Default table | Table            | Collisions 
+:---                         |     ---:|               :---   |                        :---   |    :---          |     :---
+File first_million_primes.txt|1,000,000|                   116|                          110  |187298315, 1315206703, -898698574, -282484222| 75
+
 
 ## Speed
 
