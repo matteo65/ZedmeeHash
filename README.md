@@ -3,7 +3,7 @@ Strong, fast, simple, non-cryptographic 32/64 universal hash function
 
 Zedmee is based on the use of a table of random numbers (lookup table). The mathematical properties of distribution and number of collisions are typical of **Universal Hashing**. The algorithm is very simple and is uses only bitwise, shift and adding operations.  
 
-The lookup table contains 256 ramdom values (one for each byte); by default zedmee uses a table generated with the lfsr113 algorithm for the 32-bit version or lfsr258 for the 64 bit version, but any other random table can be used and it is also possible to specify a seed.  
+The lookup table contains 256 ramdom values (one for each byte); by default zedmee uses a table generated with the lfsr113 algorithm for the 32-bit version or lfsr258 for the 64 bit version, but any other random table can be used; it is also possible to specify a seed.  
 
 The result may seem like a trivial algorithm, as a multiplicative hash function, but the characteristics and quality of the result are equal to if not superior to the best and complex hash functions.  
 
@@ -30,7 +30,7 @@ It also has a good Avalanche Effect property: even a minimal differences (1 bit)
 
 ## Minimum number of collisions
 Zedmee belongs to the family of universal hash functions which always guarantees a very low number of collisions for each reasonably large number of distinct values.  
-The number of expected collisions is given by the formula _n-m*(1-((m-1)/m)^n)_ where _n_ is the number of values, _m_ is 2^32 or 2^64.  
+The number of expected collisions is given by the formula _n-m*(1-((m-1)/m)^n)_ where _n_ is the number of input values, _m_ is the number of all possible hash values (2^32 or 2^64).  
 
 #### 32-bit hash functions: number of collisions for small data arrays (1-4 bytes)
 
@@ -43,17 +43,17 @@ The number of expected collisions is given by the formula _n-m*(1-((m-1)/m)^n)_ 
 
 #### 32-bit hash functions: number of collisions for strings (ASCII 1 byte per char)
 
-Data input                                                  |   #Hashes   | Zedmee | Murmur3 |   XX   |  Rabin
-:---                                                        |       ---:  |    ---:|     ---:|    ---:|    ---:
-Numbers as strings from "0" to "999999999"                  |1,000,000,000|107,946,574|107,822,463|110,287,893|365,950,432
-File Resource words_en.txt                                  |    65,503   |       0|        0|       0|      14
-File Resource words_es.txt                                  |    74,571   |       0|        2|       0|      38
-File Resource words_it.txt                                  |   117,558   |       0|        0|       2|      28
-File Resource words_latin.txt                               |    80,007   |       0|        1|       1|      34
-File Resource words_en_es_it_latin.txt                      |   315,198   |       0|        9|       9|     271
-File Resource words_and_numbers.txt                         |   429,187   |       4|       20|      19|     251
-File Resource first_million_primes.txt                      |   1,000,000 |     104|      118|      85|       0
-File Resource random_64bit_signed_numbers.txt               |   1,000,000 |     109|      110|     143|     122
+Data input                                                  |   #Vaues    |#Expect Colls|    Zedmee |   Murmur3 |     XX
+:---                                                        |         ---:|         ---:|       ---:|       ---:|       ---:
+Numbers as strings from "0" to "999999999"                  |1,000,000,000|             |107,946,574|107,822,463|110,287,893
+File Resource words_en.txt                                  |    65,503   |             |          0|          0|          0
+File Resource words_es.txt                                  |    74,571   |             |          0|          2|          0
+File Resource words_it.txt                                  |   117,558   |             |          0|          0|          2
+File Resource words_latin.txt                               |    80,007   |             |          0|          1|          1
+File Resource words_en_es_it_latin.txt                      |   315,198   |             |          0|          9|          9
+File Resource words_and_numbers.txt                         |   429,187   |             |          4|         20|         19
+File Resource first_million_primes.txt                      |   1,000,000 |             |        104|        118|         85
+File Resource random_64bit_signed_numbers.txt               |   1,000,000 |             |        109|        110|        143
 
 #### 32-bit hash functions: number of collisions for data input from [19-48] bytes
 
