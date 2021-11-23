@@ -41,6 +41,8 @@ Data input                                             |  #Values  |#Expected Co
 1 to 3 bytes values 00-FF, 0100-FFFF, 010000-FFFFFF    | 16,777,216|              32,725|   32,284|       0|    0
 1 to 3 bytes values 00-FF, 0000-FFFF, 000000-FFFFFF    | 16,843,008|              32,982|   32,590|       0|    0  
 
+Note that both Murmur and XX for arrays up to 4 bytes long (8 for version 64) behave like perfect hash functions (0 collisions), but this feature makes them more vulnerable.  
+
 #### 32-bit : number of collisions for ASCII strings
 
 Data input                                         |   #Vaues    |#Expected Collisions|    Zedmee |   Murmur3 |     XX
@@ -72,11 +74,11 @@ Random 32 bytes [rrrrrrrr], r from 00000000 to FFFFFFFF random                  
 
 ## Vulnerability
 Zedmee, like most non-cryptographic functions, is non-secure because it is not specifically designed to be difficult to reverse by an adversary, making it unsuitable for cryptographic purposes. Its use is instead recommended in all other contexts where hash functions are used.  
-Like other non-cryptographic functions, its security depends on the secrecy of the possibly used seed, but unlike the other algorithms, zedmee allows you to initialize the preloaded table with four own 32-bit seeds (or five 64-bit seeds for version 64) which make it much more secure than the others functions.  
+Like other non-cryptographic functions, its security depends on the secrecy of the possibly used seed, but unlike most other algorithms, zedmee allows you to use a 256 length table of 32-bit random values (or 64-bit for zedmee64) which make it much more secure than the others functions.  
 
 ## Portability
-It is simple, straightforward and can be easily written in virtually any programming language.  
-Currently C and Java versions are for Big Endian architecture but mirror functions for Little Endian can be easily written.  
+It is simple, elegant, straightforward and can be easily written in virtually any programming language.  
+Currently C and Java versions are available.  
 
 ## About comparison functions
 The family of 32/64 bit hash functions is very numerous: SuperFastHash, FNV, djb2, PJW, Murmur
