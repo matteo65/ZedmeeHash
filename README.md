@@ -18,6 +18,7 @@ public static int hash(final byte[] data, int pos, int length, final int seed, f
 }
 ``` 
 
+
 ## Uniform distribution of hash values (diffusion)
 Zedmee has an absolutely uniform, chaotic distribution of hash values independent of the number, length and type of input values.  
 It also has a good Avalanche Effect property: even a minimal differences (1 bit) of input values produces very different hash values.  
@@ -68,6 +69,7 @@ Binary 24 bytes [b,b\*3,b\*5,b\*7,b\*11,b\*13], b from 00000000 to 05F5E0FF     
 Strings 48 length "ssssss", s from "00000000" to "05F5E0FF"                            | 1,153,944 | 1,156,254| 1,155,854
 Random 32 bytes [rrrrrrrr], r from 00000000 to FFFFFFFF random                         | 1,155,668 | 1,156,450| 1,154,307
 
+
 ## Reduction of collisions through the choice of an appropriate table
 If you first know that the input values are limited to a subset of all possible bytes, e.g. alphanumeric strings, printable ascii, digit only... you can use a computed table to minimize collisions with that particular input subset. A simple statistical program can be used to generate this table.  
 
@@ -85,12 +87,15 @@ File first_million_primes.txt|1,000,000|                   116|                 
 Zedmee, like most non-cryptographic functions, is non-secure because it is not specifically designed to be difficult to reverse by an adversary, making it unsuitable for cryptographic purposes. Its use is instead recommended in all other contexts where hash functions are used.  
 Like other non-cryptographic functions, its security depends on the secrecy of the possibly used seed, but unlike most other algorithms, zedmee allows you to use a 256 length table of 32-bit random values (or 64-bit for zedmee64) which make it much more secure than the others functions.  
 
+
 ## Portability
 It is simple, elegant, straightforward and can be easily written in virtually any programming language.  
 Currently C and Java versions are available.  
 
+
 ## About comparison functions
 The family of 32/64 bit hash functions is very numerous: SuperFastHash, FNV, djb2, PJW, Murmur
+
 
 ## Conclusion
 Zedmee demonstrates to have a quality of the dispersion of values close to an ideal Universal Hash Function, and shares this quality with Murmur3, while XX has a slightly lower quality as it has a distribution that in some cases differs (positively or negatively) from a random spread.  
