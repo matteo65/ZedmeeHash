@@ -41,19 +41,19 @@ The number of expected collisions is given by the formula _n-m*(1-((m-1)/m)^n)_ 
 |1 to 3 bytes values 00-FF, 0100-FFFF, 010000-FFFFFF    | 16,777,216|   32,990|       0|    0|  0|
 |1 to 3 bytes values 00-FF, 0000-FFFF, 000000-FFFFFF    |4,311,810,304|16,843,008|16,843,008|16,843,008|16,843,008|
 
-#### 32-bit hash functions: number of collisions for strings (ASCII 1 byte per char)
+#### 32-bit hash functions: number of collisions for ASCII strings
 
 Data input                                         |   #Vaues    |#Expect Colls|    Zedmee |   Murmur3 |     XX
 :---                                               |         ---:|         ---:|       ---:|       ---:|       ---:
-Numbers as strings from "0" to "999999999"         |1,000,000,000|             |107,946,574|107,822,463|110,287,893
-File words_en.txt                                  |    65,503   |             |          0|          0|          0
-File words_es.txt                                  |    74,571   |             |          0|          2|          0
-File words_it.txt                                  |   117,558   |             |          0|          0|          2
-File words_latin.txt                               |    80,007   |             |          0|          1|          1
-File words_en_es_it_latin.txt                      |   315,198   |             |          0|          9|          9
-File words_and_numbers.txt                         |   429,187   |             |          4|         20|         19
-File first_million_primes.txt                      |   1,000,000 |             |        104|        118|         85
-File random_64bit_signed_numbers.txt               |   1,000,000 |             |        109|        110|        143
+Numbers as strings from "0" to "999999999"         |1,000,000,000|  107,882,641|107,946,574|107,822,463|110,287,893
+File words_en.txt                                  |    65,503   |          0  |          0|          0|          0
+File words_es.txt                                  |    74,571   |          0  |          0|          2|          0
+File words_it.txt                                  |   117,558   |          1  |          0|          0|          2
+File words_latin.txt                               |    80,007   |          0  |          0|          1|          1
+File words_en_es_it_latin.txt                      |   315,198   |         11  |          0|          9|          9
+File words_and_numbers.txt                         |   429,187   |         21  |          4|         20|         19
+File first_million_primes.txt                      |   1,000,000 |        116  |        104|        118|         85
+File random_64bit_signed_numbers.txt               |   1,000,000 |        116  |        109|        110|        143
 
 #### 32-bit hash functions: number of collisions for data input from [19-48] bytes
 
