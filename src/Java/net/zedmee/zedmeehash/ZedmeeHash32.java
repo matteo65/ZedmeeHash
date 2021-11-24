@@ -38,7 +38,13 @@ public class ZedmeeHash32 {
 		
 	public static final int DEFAULT_SEED = 0;
 	
-	public static final int[] DEFAULT_TABLE = genTable(0xD6B83C58, 0xF9EA4DB5, 0xBD4E0EF8, 0x740B7CA5);
+	public static final int DEFAULT_TABLE_SEED_1 = 0x4BA5DDB7;
+	public static final int DEFAULT_TABLE_SEED_2 = 0xFF608999;
+	public static final int DEFAULT_TABLE_SEED_3 = 0x761D33E0;
+	public static final int DEFAULT_TABLE_SEED_4 = 0xB709D577;
+	
+	public static final int[] DEFAULT_TABLE = genTable(DEFAULT_TABLE_SEED_1, DEFAULT_TABLE_SEED_2, 
+			                                   DEFAULT_TABLE_SEED_3, DEFAULT_TABLE_SEED_4);
 		
 	/**
 	 * Return a random table generated using lfsr113 RNG 
@@ -92,6 +98,16 @@ public class ZedmeeHash32 {
 		return table;
 	}
 	
+	/**
+	 * Return the expected collisions of 32-bit hash functions for n distinct values
+	 * @return
+	 */
+	public static double expectedCollisions(int n) {
+		// n-m*(1-((m-1)/m)^n) where m = 2^32
+		double r = 4294967295d / 4294967296d;
+		return n - 4294967296d * (1 - Math.pow(r, n));
+	}
+	
 	private ZedmeeHash32() {}
 	
 	/**
@@ -102,13 +118,11 @@ public class ZedmeeHash32 {
 	 * @param seed
 	 * @return hash value
 	 */
-	public static int hash(final byte[] data, int pos, final int length, final int seed, final int[] table) {
+	public static int hash(final byte[] data, int pos, int length, final int seed, final int[] table) {
 		int h = seed;
-		final int len = pos + length;
-		int c = 0;
-		for(int i = pos; i < len; i++) {
+		while(length > 0) {
 			h += h << 2; 
-			h ^= table[(c++ + data[i]) & 0xFF];
+			h ^= table[(--length + data[pos++]) & 0xFF];
 		}
 		return h;
 	}
