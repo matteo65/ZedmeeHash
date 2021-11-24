@@ -10,8 +10,10 @@ The result may seem like a trivial algorithm, as a multiplicative hash function,
 ```java
 public static int hash(final byte[] data, int pos, int length, final int seed, final int[] table) {
 	int h = seed;
-	while(length > 0)
-		h = (h * 5) ^ table[(--length + data[pos++]) & 0xFF];
+	while(length > 0) {
+		h += h << 2;
+		h ^= table[(--length + *p++) & 0xFF];
+	}
 	return h;
 }
 ``` 
