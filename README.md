@@ -76,9 +76,10 @@ In most other algorithms, a similar but less effective result can be obtained us
 
 #### Number of collisions with different tables
 
-File input                   | #Values | #Expected Collisions | Collisions with Default table | Table (genTable())| Collisions 
-:---                         |     ---:|               :---   |                        :---   |    :---           |     :---
-File first_million_primes.txt|1,000,000|                   116|                          110  |187298315, 1315206703, -898698574, -282484222| 75
+File input                   | #Values | #Expected Collisions |Collisions with Default table| Table (genTable())| Collisions 
+:---                         |     ---:|               :---   |                       :---  |    :---           |     :---
+File first_million_primes.txt|1,000,000|                   116|                         110 |187298315, 1315206703, -898698574, -282484222| 75
+File random_64bit_signed_numbers.txt|1,000,000|            116|                         113 |-557943317, -1545483323, -942556476, -1399776912|74
 
 
 ## Speed
