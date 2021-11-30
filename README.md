@@ -8,16 +8,13 @@ The lookup table contains 256 ramdom values (one for each byte); by default zedm
 The result may seem like a trivial algorithm, as a multiplicative hash function, but the characteristics and quality of the result are equal to if not superior to the best and complex hash functions.  
 
 ```java
-public static int hash(final byte[] data, int pos, int length, final int seed, final int[] table) {
-	int h = seed;
-	while(length > 0) {
-		h += h << 2;
-		h ^= table[(--length + data[pos++]) & 0xFF];
-	}
-	return h;
+public static int hash(final byte[] data, int pos, int length, int seed, final int[] table) {
+	while(length > 0)
+		seed = table[(--length + data[pos + length]) & 0xFF] ^ (seed * 5);
+	
+	return seed;
 }
 ``` 
-
 
 ## Uniform distribution of hash values (diffusion)
 Zedmee has an absolutely uniform, chaotic distribution of hash values independent of the number, length and type of input values.  
