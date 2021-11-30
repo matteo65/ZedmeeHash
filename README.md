@@ -11,7 +11,6 @@ The result may seem like a trivial algorithm, as a multiplicative hash function,
 public static int hash(final byte[] data, int pos, int length, int seed, final int[] table) {
 	while(length > 0)
 		seed = table[(--length + data[pos + length]) & 0xFF] ^ (seed * 5);
-	
 	return seed;
 }
 ``` 
