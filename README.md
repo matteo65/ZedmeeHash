@@ -92,7 +92,7 @@ Like other non-cryptographic functions, its security depends on the secrecy of t
 
 
 ## Portability
-It is minimalist, elegant, straightforward and can be easily written in virtually any programming language.  
+It is minimalist, elegant, straightforward and can be easily written in virtually any programming language; the algorithm and results are the same for the Big Endian and Little Endian architectures.  
 Currently C and Java versions are available.  
 
 
