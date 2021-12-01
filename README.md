@@ -83,6 +83,9 @@ File random_64bit_signed_numbers.txt|1,000,000|            116|                 
 #### 32-bit hashing run time of 100,000,000 values length from 1 to 30 bytes
 ![Alt Text](https://raw.githubusercontent.com/matteo65/ZedmeeHash/main/Resource/32-bit_speed.png)
 
+Zedmee32 is the fastest with length values up to 12 bytes, then it is slightly slower.  
+Comparison was made with the non-parallel XX version.  
+
 ## Vulnerability
 Zedmee, like most non-cryptographic functions, is non-secure because it is not specifically designed to be difficult to reverse by an adversary, making it unsuitable for cryptographic purposes. Its use is instead recommended in all other contexts where hash functions are used.  
 Like other non-cryptographic functions, its security depends on the secrecy of the possibly used seed, but unlike most other algorithms, zedmee allows you to use a 256 length table of 32-bit random values (or 64-bit for zedmee64) which make it much more secure than the others functions.  
