@@ -38,50 +38,42 @@ public class ZedmeeHash32 {
 		
 	public static final int DEFAULT_SEED = 0;
 	
-	public static final int DEFAULT_TABLE_SEED_1 = 0x4BA5DDB7;
-	public static final int DEFAULT_TABLE_SEED_2 = 0xFF608999;
-	public static final int DEFAULT_TABLE_SEED_3 = 0x761D33E0;
-	public static final int DEFAULT_TABLE_SEED_4 = 0xB709D577;
+	public static final int DEFAULT_TABLE_SEED_1 = 0xB8F09159;
+	public static final int DEFAULT_TABLE_SEED_2 = 0x69C2A8E9;
+	public static final int DEFAULT_TABLE_SEED_3 = 0x40B732C7;
+	public static final int DEFAULT_TABLE_SEED_4 = 0xAE597B8B;
 	
-	public static final int[] DEFAULT_TABLE = genTable(DEFAULT_TABLE_SEED_1, DEFAULT_TABLE_SEED_2, 
-			                                   DEFAULT_TABLE_SEED_3, DEFAULT_TABLE_SEED_4);
-		
+	private static final int[] DEFAULT_TABLE = genTable(new int[256], DEFAULT_TABLE_SEED_1, DEFAULT_TABLE_SEED_2, 
+			                                                          DEFAULT_TABLE_SEED_3, DEFAULT_TABLE_SEED_4);
+
 	/**
-	 * Return a random table generated using lfsr113 RNG 
+	 * Genarate the random table using lfsr113 RNG 
+	 * @param table int[256]
 	 * @param seed1
 	 * @param seed2
 	 * @param seed3
 	 * @param seed4
+	 * @return the table
 	 */
-	public static int[] genTable(int seed1, int seed2, int seed3, int seed4) {
+	public static int[] genTable(int[] table, int seed1, int seed2, int seed3, int seed4) {
 		// Note: seed1,2,3,4 are consider unsigned
 		// Used by lfsr113 pseudo random number generator
 		// Author: Pierre L'Ecuyer
 		// The initial seeds seed1, seed2, seed3, seed4  MUST be larger than
 		// 1, 7, 15, and 127 respectively!!!
 		
-		if((seed1 & 0xFFFFFFFE) == 0) {
-			// seed1 is less than 2 
-			seed1 |= 0x02;
-		}
-				
-		if((seed2 & 0xFFFFFFF8) == 0) {
-			// seed2 is less than 8
-			seed2 |= 0x08;
-		}
+		// if seed1 is less than 2 
+		if((seed1 & 0xFFFFFFFE) == 0) seed1 |= 0x02;
 		
-		if((seed3 & 0xFFFFFFF0) == 0) {
-			// seed3 is less than 16
-			seed3 |= 0x10;
-		}
+		// if seed2 is less than 8
+		if((seed2 & 0xFFFFFFF8) == 0) seed2 |= 0x08;
 		
-		if((seed4 & 0xFFFFFF80) == 0) {
-			// seed4 is less than 128;
-			seed4 |= 0x80; // Force bit 128
-		}
+		// if seed3 is less than 16
+		if((seed3 & 0xFFFFFFF0) == 0) seed3 |= 0x10;
 		
-		int[] table = new int[256];
-		
+		// if seed4 is less than 128;
+		if((seed4 & 0xFFFFFF80) == 0) seed4 |= 0x80;
+
 		for (int i = 0; i < 256; i++) {
 			int b = (((seed1 << 6) ^ seed1) >>> 13);
 			seed1 = (((seed1 & 0xFFFFFFFE) << 18) ^ b);
@@ -91,13 +83,12 @@ public class ZedmeeHash32 {
 			seed3 = (((seed3 & 0xFFFFFFF0) << 7) ^ b);
 			b = (((seed4 << 3) ^ seed4) >>> 12);
 			seed4 = (((seed4 & 0xFFFFFF80) << 13) ^ b);
-			
-			table[i] = seed1 ^ seed2 ^ seed3 ^ seed4;
-	    	}
+			table[i] = (seed1 ^ seed2 ^ seed3 ^ seed4);
+	    }
 		
 		return table;
 	}
-	
+
 	/**
 	 * Return the expected collisions of 32-bit hash functions for n distinct values
 	 * @return
@@ -118,15 +109,17 @@ public class ZedmeeHash32 {
 	 * @param seed
 	 * @return hash value
 	 */
-	public static int hash(final byte[] data, int pos, int length, final int seed, final int[] table) {
+	public static int hash(final byte[] data, final int pos, int length, final int seed, final int[] table) {
 		int h = seed;
-		while(length > 0) {
-			h += h << 2; 
-			h ^= table[(--length + data[pos++]) & 0xFF];
-		}
+		while(length > 0)
+			h = table[(--length + data[pos + length]) & 0xFF] ^ (h * 5);
 		return h;
 	}
-
+	
+	public static int hash(final byte[] data, final int pos, final int length, int seed) {
+		return hash(data, pos, length, seed, DEFAULT_TABLE);
+	}
+	
 	public static int hash(final byte[] data, final int pos, final int length) {
 		return hash(data, pos, length, DEFAULT_SEED, DEFAULT_TABLE);
 	}
