@@ -101,7 +101,7 @@ uint32_t zedmeehash32(const char *data, int pos, size_t length, uint32_t seed, u
  **/
 uint32_t zedmeehash32def(const char *data, int pos, size_t length, uint32_t seed)
 {
-data += pos;
+	data += pos;
 	while(length)
 		seed = default_table[(--length + data[length]) & 0xFF] ^ ((seed << 2) + seed);
 	return seed;
