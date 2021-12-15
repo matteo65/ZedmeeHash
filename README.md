@@ -34,10 +34,10 @@ The number of expected collisions for a Ideal Hash Funcion is given by the formu
 
 Data input                                             |  #Values  |#Expected Collisions| Zedmee  | Murmur3|  XX 
 :---                                                   |       ---:|                ---:|     ---:|    ---:| ---:
-4-bytes values 00000000-05F5E0FF                       |100,000,000|           1,155,170|1,154,926|       0|    0
-4-bytes values FA0A1F00-FFFFFFFF                       |100,000,000|           1,155,170|1,155,292|       0|    0
-1 to 3 bytes values 00-FF, 0100-FFFF, 010000-FFFFFF    | 16,777,216|              32,725|   32,284|       0|    0
-1 to 3 bytes values 00-FF, 0000-FFFF, 000000-FFFFFF    | 16,843,008|              32,982|   32,590|       0|    0  
+4-bytes values 00000000-05F5E0FF                       |100,000,000|           1,155,170|1,152,721|       0|    0
+4-bytes values FA0A1F00-FFFFFFFF                       |100,000,000|           1,155,170|1,154,388|       0|    0
+1 to 3 bytes values 00-FF, 0100-FFFF, 010000-FFFFFF    | 16,777,216|              32,725|   32,358|       0|    0
+1 to 3 bytes values 00-FF, 0000-FFFF, 000000-FFFFFF    | 16,843,008|              32,982|   32,606|       0|    0  
 
 Note that both Murmur and XX for arrays up to 4 bytes long (8 for version 64) behave like perfect hash functions (0 collisions), but this feature makes them more vulnerable.  
 
@@ -45,26 +45,26 @@ Note that both Murmur and XX for arrays up to 4 bytes long (8 for version 64) be
 
 Data input                                         |   #Vaues    |#Expected Collisions|    Zedmee |   Murmur3 |     XX
 :---                                               |         ---:|                ---:|       ---:|       ---:|    ---:
-Numbers as strings from "0" to "999999999"         |1,000,000,000| 107,882,641        |107,882,812|107,822,463|~~110,287,893~~
+Numbers as strings from "0" to "999999999"         |1,000,000,000| 107,882,641        |107,869,763|107,822,463|110,287,893
 File words_en.txt                                  |    65,503   |         0          |          0|          0|          0
-File words_es.txt                                  |    74,571   |         0          |          0|        ~~2~~|          0
-File words_it.txt                                  |   117,558   |         1          |          1|          0|        ~~2~~
-File words_latin.txt                               |    80,007   |         0          |          0|        ~~1~~|        ~~1~~
-File words_en_es_it_latin.txt                      |   315,198   |        11          |          3|          9|          9
-File words_and_numbers.txt                         |   429,187   |        21          |          5|         20|         19
-File first_million_primes.txt                      |   1,000,000 |       116          |        110|      ~~118~~|         85
-File random_64bit_signed_numbers.txt               |   1,000,000 |       116          |        113|        110|       ~~143~~
+File words_es.txt                                  |    74,571   |         0          |          0|          2|          0
+File words_it.txt                                  |   117,558   |         1          |          0|          0|          2
+File words_latin.txt                               |    80,007   |         0          |          0|          1|          1
+File words_en_es_it_latin.txt                      |   315,198   |        11          |          8|          9|          9
+File words_and_numbers.txt                         |   429,187   |        21          |         14|         20|         19
+File first_million_primes.txt                      |   1,000,000 |       116          |        101|        118|         85
+File random_64bit_signed_numbers.txt               |   1,000,000 |       116          |        101|        110|        143
 
 #### 32-bit : number of collisions for data input from [19-48] bytes. 100,000,000 values, 1,155,170 expected collisions
 
 Data input                                                                             |  Zedmee   | Murmur3  |     XX   
 :---                                                                                   |       ---:|      ---:|      ---:
-Number as strings from "1234567890123456789" to "1234567890223456788"                  | 1,155,834 | 1,155,789|   808,693      
-Strings from "abcdefg1234567890123456789hijklmn" to "abcdefg1234567890223456788hijklmn"| 1,155,449 | 1,152,600| 1,037,151  
-Binary 24 bytes [b,b,b,b,b,b], b from 00000000 to 05F5E0FF                             | 1,154,554 | 1,154,653| 1,411,483
-Binary 24 bytes [b,b\*3,b\*5,b\*7,b\*11,b\*13], b from 00000000 to 05F5E0FF            | 1,155,723 | 1,154,542| 1,160,003
-Strings 48 length "ssssss", s from "00000000" to "05F5E0FF"                            | 1,153,944 | 1,156,254| 1,155,854
-Random 32 bytes [rrrrrrrr], r from 00000000 to FFFFFFFF random                         | 1,155,668 | 1,156,450| 1,154,307
+Number as strings from "1234567890123456789" to "1234567890223456788"                  | 1,152,279 | 1,155,789|   808,693      
+Strings from "abcdefg1234567890123456789hijklmn" to "abcdefg1234567890223456788hijklmn"| 1,153,907 | 1,152,600| 1,037,151  
+Binary 24 bytes [b,b,b,b,b,b], b from 00000000 to 05F5E0FF                             | 1,155,010 | 1,154,653| 1,411,483
+Binary 24 bytes [b,b\*3,b\*5,b\*7,b\*11,b\*13], b from 00000000 to 05F5E0FF            | 1,155,521 | 1,154,542| 1,160,003
+Strings 48 length "ssssss", s from "00000000" to "05F5E0FF"                            | 1,154,055 | 1,156,254| 1,155,854
+Random 32 bytes [rrrrrrrr], r from 00000000 to FFFFFFFF random                         | 1,154,774 | 1,156,450| 1,154,307
 
 
 ## Reduction of collisions through the choice of an appropriate table
