@@ -44,7 +44,7 @@ public class ZedmeeHash32 {
 	public static final int DEFAULT_TABLE_SEED_4 = 0xAE597B8B;
 	
 	private static final int[] DEFAULT_TABLE = genTable(new int[256], DEFAULT_TABLE_SEED_1, DEFAULT_TABLE_SEED_2, 
-			                                                          DEFAULT_TABLE_SEED_3, DEFAULT_TABLE_SEED_4);
+			                                                  DEFAULT_TABLE_SEED_3, DEFAULT_TABLE_SEED_4);
 
 	/**
 	 * Genarate the random table using lfsr113 RNG 
@@ -84,7 +84,7 @@ public class ZedmeeHash32 {
 			b = (((seed4 << 3) ^ seed4) >>> 12);
 			seed4 = (((seed4 & 0xFFFFFF80) << 13) ^ b);
 			table[i] = (seed1 ^ seed2 ^ seed3 ^ seed4);
-	    }
+	    	}
 		
 		return table;
 	}
