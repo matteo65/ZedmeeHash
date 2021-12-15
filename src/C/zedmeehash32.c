@@ -37,22 +37,24 @@
 
 #include "zedmeehash32.h"
 
+static uint32_t default_table[256];
+
 /**
- * Generate and return a array of 256 uint32_t using the lfsr113 algorithm
- * It return a static array rewrited every call
+ * Generate the lookup table of 256 uint32_t using the lfsr113 algorithm
+ * param table: uint32_t[256]
  **/
-const uint32_t *gentable(uint32_t seed1, uint32_t seed2, uint32_t seed3, uint32_t seed4) 
-{
-	static uint32_t table[256];
-		
+void zmh32create_table(uint32_t table[], uint32_t seed1, uint32_t seed2, uint32_t seed3, uint32_t seed4) 
+{		
 	// LFSR113 pseudo random number generator
 	// Author: Pierre L'Ecuyer
 	// The initial seeds seed1, seed2, seed3, seed4  MUST be larger than
 	// 1, 7, 15, and 127 respectively!!!
-		
 	if(seed1 < 2) seed1 |= 0x02;
+			
 	if(seed2 < 8) seed2 |= 0x08;
+	
 	if(seed3 < 16) seed3 |= 0x10;
+	
 	if(seed4 < 128)	seed4 |= 0x80;
 
 	for (int i = 0; i < 256; i++) {
@@ -64,11 +66,18 @@ const uint32_t *gentable(uint32_t seed1, uint32_t seed2, uint32_t seed3, uint32_
 		seed3 = (((seed3 & 0xFFFFFFF0) << 7) ^ b);
 		b = (((seed4 << 3) ^ seed4) >> 12);
 		seed4 = (((seed4 & 0xFFFFFF80) << 13) ^ b);
-			
-		table[i] = seed1 ^ seed2 ^ seed3 ^ seed4;
-	}
 		
-	return table;
+		table[i] = (seed1 ^ seed2 ^ seed3 ^ seed4);
+	}
+}
+
+/**
+ * Initialize the defalt table
+ */
+void zmh32init_table(void)
+{
+	zmh32create_table(default_table, DEFAULT_TABLE_SEED_1, DEFAULT_TABLE_SEED_2,
+	                 DEFAULT_TABLE_SEED_3, DEFAULT_TABLE_SEED_4);
 }
 
 /**
@@ -78,16 +87,24 @@ const uint32_t *gentable(uint32_t seed1, uint32_t seed2, uint32_t seed3, uint32_
  * length <= data.length
  * table a 256 uint32_t array
  **/
-uint32_t zedmeehash32(const void *data, int pos, size_t length, uint32_t seed, const uint32_t table[]) 
+uint32_t zedmeehash32(const char *data, int pos, size_t length, uint32_t seed, uint32_t table[]) 
 {
-	register const char *p = (const char*)(data + pos);
-	register uint32_t h = seed;
-	while (length) {
-		h += h << 2;
-		h ^= table[(--length + *p++) & 0xFF];
-	}
-	return h;
+	data += pos;
+	while(length)
+		seed = table[(--length + data[length]) & 0xFF] ^ ((seed << 2) + seed);
+	return seed;
 }
 
+
+/**
+ * Use the default table
+ **/
+uint32_t zedmeehash32def(const char *data, int pos, size_t length, uint32_t seed)
+{
+data += pos;
+	while(length)
+		seed = default_table[(--length + data[length]) & 0xFF] ^ ((seed << 2) + seed);
+	return seed;
+}
 
 
