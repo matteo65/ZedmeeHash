@@ -76,7 +76,7 @@ In most other algorithms, a similar but less effective result can be obtained us
 File input                   | #Values | #Expected Collisions |Collisions with Default table| Table (genTable())| Collisions 
 :---                         |     ---:|               :---   |                       :---  |    :---           |     :---
 File first_million_primes.txt|1,000,000|                   116|                         101 |187298315, 1315206703, -898698574, -282484222| 75
-File random_64bit_signed_numbers.txt|1,000,000|            116|                         101 |-557943317, -1545483323, -942556476, -1399776912|74
+File random_64bit_signed_numbers.txt|1,000,000|            116|                         101 |-1418137677, -1574389196, -738336105, -940565353|63
 
 
 ## Speed
@@ -92,7 +92,7 @@ Like other non-cryptographic functions, its security depends on the secrecy of t
 
 
 ## Portability
-It is minimalist, elegant, straightforward and can be easily written in virtually any programming language; the algorithm and results are the same for the Big Endian and Little Endian architectures.  
+It is minimalist, elegant, straightforward and can be easily written in virtually any programming language. 
 Currently C and Java versions are available.  
 
 
