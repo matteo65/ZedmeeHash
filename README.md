@@ -73,7 +73,7 @@ In most other algorithms, a similar but less effective result can be obtained us
 
 #### Number of collisions with different tables
 
-File input                   | #Values | #Expected Collisions |Collisions with Default table| Table (genTable())| Collisions 
+File input                   | #Values | #Expected Collisions |Collisions with Default table| Seeds table (genTable())| Collisions 
 :---                         |     ---:|               :---   |                       :---  |    :---           |     :---
 File first_million_primes.txt|1,000,000|                   116|                         101 |620231510, -1437367977, 1068537278, 1691867698| 63
 File random_64bit_signed_numbers.txt|1,000,000|            116|                         101 |-1418137677, -1574389196, -738336105, -940565353| 63
