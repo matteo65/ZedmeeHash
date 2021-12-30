@@ -1,9 +1,9 @@
 # ZedmeeHash 32/64
 Strong, fast, simple, non-cryptographic 32/64 universal hash function  
 
-Zedmee is based on the use of a table of random numbers (lookup table). The mathematical properties of distribution and number of collisions are typical of **Universal Hashing**. The algorithm is minimalist and uses only bitwise, shift and adding operations.  
+Zedmee is based on the use of a table of random numbers (lookup table); the algorithm is minimalist and uses only bitwise, shift and adding operations.  
 
-The lookup table contains 256 ramdom values (one for each byte); by default zedmee uses a table generated with the lfsr113 algorithm for the 32-bit version or lfsr258 for the 64 bit version, but any other random table can be used; it is also possible to specify a seed.  
+The lookup table contains 256 ramdom values (one for each byte); by default zedmee uses a table generated with the LFSR113 algorithm for the 32-bit version or LFSR258 for the 64 bit version, but any other random table can be used; it is also possible to specify a seed.  
 
 The result may seem like a trivial algorithm, as a multiplicative hash function, but the characteristics and quality of the result are equal to if not superior to the best and complex hash functions.  
 
@@ -27,8 +27,8 @@ It also has a good Avalanche Effect property: even a minimal differences (1 bit)
 ![Alt Text](https://raw.githubusercontent.com/matteo65/ZedmeeHash/main/Resource/zmh_distributions.png)
 
 ## Minimum number of collisions
-Zedmee belongs to the family of universal hash functions which always guarantees a very low number of collisions for each reasonably large number of distinct values.  
-The number of expected collisions for a Ideal Hash Funcion is given by the formula _n-m*(1-((m-1)/m)^n)_ where _n_ is the number of input values, _m_ is the number of all possible hash values (2^32 or 2^64).  
+Zedmee produces a very low number of collisions for each reasonably large number of distinct values; it is close to the number of collisions of a Universal Hash Function.  
+The number is given by the formula _n-m*(1-((m-1)/m)^n)_ where _n_ is the number of input values, _m_ is the number of all possible hash values (2^32 or 2^64).  
 
 #### 32-bit : number of collisions for small data arrays (1-4 bytes)
 
@@ -75,8 +75,8 @@ In most other algorithms, a similar but less effective result can be obtained us
 
 File input                   | #Values | #Expected Collisions |Collisions with Default table| Table (genTable())| Collisions 
 :---                         |     ---:|               :---   |                       :---  |    :---           |     :---
-File first_million_primes.txt|1,000,000|                   116|                         101 |187298315, 1315206703, -898698574, -282484222| 75
-File random_64bit_signed_numbers.txt|1,000,000|            116|                         101 |-1418137677, -1574389196, -738336105, -940565353|63
+File first_million_primes.txt|1,000,000|                   116|                         101 |620231510, -1437367977, 1068537278, 1691867698| 63
+File random_64bit_signed_numbers.txt|1,000,000|            116|                         101 |-1418137677, -1574389196, -738336105, -940565353| 63
 
 
 ## Speed
