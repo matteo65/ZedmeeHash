@@ -27,7 +27,7 @@ It also has a good Avalanche Effect property: even a minimal differences (1 bit)
 ![Alt Text](https://raw.githubusercontent.com/matteo65/ZedmeeHash/main/Resource/zmh_distributions.png)
 
 ## Minimum number of collisions
-Zedmee produces a very low number of collisions for each reasonably large number of distinct values; it is close to the number of collisions of a Universal Hash Function.  
+Zedmee produces a very low number of collisions for each reasonably large number of distinct values; it is close to the collisions number of a Universal Hash Function.  
 The number is given by the formula _n-m*(1-((m-1)/m)^n)_ where _n_ is the number of input values, _m_ is the number of all possible hash values (2^32 or 2^64).  
 
 #### 32-bit : number of collisions for small data arrays (1-4 bytes)
