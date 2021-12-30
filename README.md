@@ -3,7 +3,7 @@ Strong, fast, simple, non-cryptographic 32/64 universal hash function
 
 Zedmee is based on the use of a table of random numbers (lookup table); the algorithm is minimalist and uses only bitwise, shift and adding operations.  
 
-The lookup table contains 256 ramdom values (one for each byte); by default zedmee uses a table generated with the LFSR113 algorithm for the 32-bit version or LFSR258 for the 64 bit version, but any other random table can be used; it is also possible to specify a seed.  
+The table contains 256 ramdom values (one for each byte); by default zedmee uses a table generated with the LFSR113 algorithm for the 32-bit version or LFSR258 for the 64 bit version, but any other random table can be used; it is also possible to specify a seed.  
 
 The result may seem like a trivial algorithm, as a multiplicative hash function, but the characteristics and quality of the result are equal to if not superior to the best and complex hash functions.  
 
