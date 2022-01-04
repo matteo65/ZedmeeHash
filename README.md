@@ -1,5 +1,5 @@
 # ZedmeeHash 32/64
-Strong, fast, simple, non-cryptographic 32/64 universal hash function  
+Strong, fast, simple, non-cryptographic 32/64 hash function  
 
 Zedmee is based on the use of a table of random numbers (lookup table); the algorithm is minimalist and uses only bitwise, shift and adding operations.  
 
