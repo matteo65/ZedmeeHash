@@ -39,7 +39,7 @@ Data input                                             |  #Values  |#Expected Co
 1 to 3 bytes values 00-FF, 0100-FFFF, 010000-FFFFFF    | 16,777,216|              32,725|   **32,358**|       **0**|    **0**
 1 to 3 bytes values 00-FF, 0000-FFFF, 000000-FFFFFF    | 16,843,008|              32,982|   **32,606**|       **0**|    **0**  
 
-Note that both Murmur and XX for arrays up to 4 bytes long (8 for version 64) behave like perfect hash functions (0 collisions), but this feature makes them more vulnerable.  
+**Note:** both Murmur and XX for arrays up to 4 bytes long (8 for version 64) behave like perfect hash functions (0 collisions), but this feature makes them more vulnerable.  
 
 #### 32-bit : number of collisions for ASCII strings
 
