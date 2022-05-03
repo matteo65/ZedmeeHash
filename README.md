@@ -67,6 +67,13 @@ Strings 48 length "ssssss", s from "00000000" to "05F5E0FF"                     
 Random 32 bytes [rrrrrrrr], r from 00000000 to FFFFFFFF random                         | **1,154,774** | 1,156,450| **1,154,307**
 
 
+#### 64-bit : number of collisions for data input string "sssss" s from "000000000" to "2540BE3FF". 10,000,000,000 values
+
+Funcction | # Collisions | Values
+:---      |      ---:    | :---
+Zedmee    |             2| Collision: F0BACA4A12C30542 Values: "17508DC8A17508DC8A17508DC8A17508DC8A17508DC8A", "1E840E8311E840E8311E840E8311E840E8311E840E831"
+          |              | Collision: A366AEB181F5D882 Values: "06C1D96E206C1D96E206C1D96E206C1D96E206C1D96E2", "0A00D74120A00D74120A00D74120A00D74120A00D7412"
+
 ## Reduction of collisions through the choice of an appropriate table
 If you first know that the input values are limited to a subset of all possible bytes, e.g. alphanumeric strings, printable ascii, digit only... you can use a special table to minimize collisions with that particular input subset. A simple statistical program can be used to generate this table.  
 In most other algorithms, a similar but less effective result can be obtained using a particular seed. Zedmee allows both.  
