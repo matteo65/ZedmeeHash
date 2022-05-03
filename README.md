@@ -75,7 +75,7 @@ Zedmee    |         **2**| Collision: **F0BACA4A12C30542**<br/>Values: "17508DC8
   &nbsp;  |     &nbsp;   | Collision: **A366AEB181F5D882**<br/>Values: "06C1D96E206C1D96E206C1D96E206C1D96E206C1D96E2", "0A00D74120A00D74120A00D74120A00D74120A00D7412"
 Murmur3   |         **5**| bla bla bla
 
-Note: Since murmur3 implements only 32 or 128-bit functions, the first 8 bytes of the 128-bit hash were used to obtain 64-bit hash, as suggested by the author
+**Note:** Since murmur3 implements only 32 or 128-bit functions, the first 8 bytes of the 128-bit hash were used to obtain 64-bit hash, as suggested by the author
 
 
 ## Reduction of collisions through the choice of an appropriate table
