@@ -72,7 +72,7 @@ Random 32 bytes [rrrrrrrr], r from 00000000 to FFFFFFFF random                  
 Funcction | # Collisions | Values
 :---      |      ---:    | :---
 Zedmee    |             2| Collision: F0BACA4A12C30542 Values: "17508DC8A17508DC8A17508DC8A17508DC8A17508DC8A", "1E840E8311E840E8311E840E8311E840E8311E840E831"
-          |              | Collision: A366AEB181F5D882 Values: "06C1D96E206C1D96E206C1D96E206C1D96E206C1D96E2", "0A00D74120A00D74120A00D74120A00D74120A00D7412"
+  &nbsp;  |     &nbsp;   | Collision: A366AEB181F5D882 Values: "06C1D96E206C1D96E206C1D96E206C1D96E206C1D96E2", "0A00D74120A00D74120A00D74120A00D74120A00D7412"
 
 ## Reduction of collisions through the choice of an appropriate table
 If you first know that the input values are limited to a subset of all possible bytes, e.g. alphanumeric strings, printable ascii, digit only... you can use a special table to minimize collisions with that particular input subset. A simple statistical program can be used to generate this table.  
