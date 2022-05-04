@@ -67,7 +67,7 @@ Strings 48 length "ssssss", s from "00000000" to "05F5E0FF"                     
 Random 32 bytes [rrrrrrrr], r from 00000000 to FFFFFFFF random                         | **1,154,774** | 1,156,450| **1,154,307**
 
 
-#### 64-bit : number of collisions for data input string "sssss" s from "000000000" to "2540BE3FF". 10,000,000,000 values
+#### 64-bit : number of collisions for data input string "sssss", s from "000000000" to "2540BE3FF". 10,000,000,000 values
 
 Funcction |  #Collisions | Values
 :---      |      ---:    | :---
