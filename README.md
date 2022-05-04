@@ -69,7 +69,7 @@ Random 32 bytes [rrrrrrrr], r from 00000000 to FFFFFFFF random                  
 
 #### 64-bit : number of collisions for data input string "sssss", s from "000000000" to "2540BE3FF". 10,000,000,000 values
 
-Funcction |  #Collisions | Values
+Function |  #Collisions | Values
 :---      |      ---:    | :---
 Zedmee    |         **2**| Collision: **F0 BA CA 4A 12 C3 05 42**<br/>Values: "17508DC8A17508DC8A17508DC8A17508DC8A17508DC8A", "1E840E8311E840E8311E840E8311E840E8311E840E831"
   &nbsp;  |     &nbsp;   | Collision: **A3 66 AE B1 81 F5 D8 82**<br/>Values: "06C1D96E206C1D96E206C1D96E206C1D96E206C1D96E2", "0A00D74120A00D74120A00D74120A00D74120A00D7412"
