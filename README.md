@@ -30,7 +30,7 @@ It also has a good Avalanche Effect property: even a minimal differences (1 bit)
 Zedmee produces a very low number of collisions for each reasonably large number of distinct values; it is close to the collisions number of a Universal Hash Function.  
 The number is given by the formula _n-m*(1-((m-1)/m)^n)_ where _n_ is the number of input values, _m_ is the number of all possible hash values (2^32 or 2^64).  
 
-#### 32-bit : number of collisions for small data arrays (1-4 bytes)
+#### 32-bit: number of collisions for small data arrays (1-4 bytes)
 
 Data input                                             |  #Values  |#Expected Collisions| Zedmee  | Murmur3|  XX 
 :---                                                   |       ---:|                ---:|     ---:|    ---:| ---:
@@ -41,7 +41,7 @@ Data input                                             |  #Values  |#Expected Co
 
 **Note:** both Murmur and XX for arrays up to 4 bytes long (8 for version 64) behave like perfect hash functions (0 collisions), but this feature makes them more vulnerable.  
 
-#### 32-bit : number of collisions for ASCII strings
+#### 32-bit: number of collisions for ASCII strings
 
 Data input                                         |   #Vaues    |#Expected Collisions|    Zedmee |   Murmur3 |     XX
 :---                                               |         ---:|                ---:|       ---:|       ---:|    ---:
@@ -55,7 +55,7 @@ File words_and_numbers.txt                         |   429,187   |        21    
 File first_million_primes.txt                      |   1,000,000 |       116          |        **101**|            118|     **85**
 File random_64bit_signed_numbers.txt               |   1,000,000 |       116          |        **101**|        **110**|      143
 
-#### 32-bit : number of collisions for data input from [19-48] bytes. 100,000,000 values, 1,155,170 expected collisions
+#### 32-bit: number of collisions for data input from [19-48] bytes. 100,000,000 values, 1,155,170 expected collisions
 
 Data input                                                                             |  Zedmee   | Murmur3  |     XX   
 :---                                                                                   |       ---:|      ---:|      ---:
@@ -67,7 +67,7 @@ Strings 48 length "ssssss", s from "00000000" to "05F5E0FF"                     
 Random 32 bytes [rrrrrrrr], r from 00000000 to FFFFFFFF random                         | **1,154,774** | 1,156,450| **1,154,307**
 
 
-#### 64-bit : number of collisions for data input string "sssss", s from "000000000" to "2540BE3FF". 10,000,000,000 values
+#### 64-bit: number of collisions for data input string "sssss", s from "000000000" to "2540BE3FF". 10,000,000,000 values
 
 Function |  #Collisions | Values
 :---      |      ---:    | :---
@@ -89,7 +89,7 @@ Murmur3   |         **5**| Collision: **45 F0 06 CF E1 6F F4 D7**<br>Strings: "0
 If you first know that the input values are limited to a subset of all possible bytes, e.g. alphanumeric strings, printable ascii, digit only... you can use a special table to minimize collisions with that particular input subset. A simple statistical program can be used to generate this table.  
 In most other algorithms, a similar but less effective result can be obtained using a particular seed. Zedmee allows both.  
 
-#### 32-bit number of collisions with different tables
+#### 32-bit: number of collisions with different tables
 
 File input                   | #Values | #Expected Collisions |Collisions with Default table| Seeds table (genTable())| Collisions 
 :---                         |     ---:|               :---   |                       :---  |    :---           |     :---
@@ -98,7 +98,7 @@ File random_64bit_signed_numbers.txt|1,000,000|            116|                 
 
 
 ## Speed
-#### 32-bit hashing run time of 100,000,000 values length from 1 to 30 bytes
+#### 32-bit: hashing run time of 100,000,000 values length from 1 to 30 bytes
 ![Alt Text](https://raw.githubusercontent.com/matteo65/ZedmeeHash/main/Resource/32-bit_speed.png)
 
 Zedmee32 is the fastest with length values up to 12 bytes, then it is slightly slower.  
