@@ -78,6 +78,9 @@ Murmur3   |         **5**| Collision: **45 F0 06 CF E1 6F F4 D7**<br>Strings: "0
  &nbsp;   |     &nbsp;   | Collision: **B1 B2 60 25 7D 9C DF 95**<br>Strings: "0E152D31E0E152D31E0E152D31E0E152D31E0E152D31E", "181B53CCC181B53CCC181B53CCC181B53CCC181B53CCC"
  &nbsp;   |     &nbsp;   | Collision: **D3 ED E1 23 5C 9A 41 D4**<br>Strings: "05C06C20B05C06C20B05C06C20B05C06C20B05C06C20B", "131D7411C131D7411C131D7411C131D7411C131D7411C"
  &nbsp;   |     &nbsp;   | Collision: **EA 2F 63 5A 7B 41 EF 22**<br>Strings: "1A89ECD471A89ECD471A89ECD471A89ECD471A89ECD47", "24F1BB43A24F1BB43A24F1BB43A24F1BB43A24F1BB43A"
+ XXHash   |         **3**| Collision: **73 5A C8 30 AC 14 DA 27**<br>Strings: "101570C93101570C93101570C93101570C93101570C93", ""
+ &nbsp;   |     &nbsp;   | Collision: **7E 7B E5 32 95 6E CC C8**<br>Strings: "05652E7A205652E7A205652E7A205652E7A205652E7A2", ""
+ &nbsp;   |     &nbsp;   | Collision: **C3 DC 2E 55 5B F3 82 A0**<br>Strings: "003AA63E8003AA63E8003AA63E8003AA63E8003AA63E8", ""
 
 **Note:** Since murmur3 implements only 32 or 128-bit functions, the first 8 bytes of the 128-bit hash were used to obtain 64-bit hash, as suggested by the author
 
