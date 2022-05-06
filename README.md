@@ -89,7 +89,7 @@ Murmur3   |         **5**| Collision: **45 F0 06 CF E1 6F F4 D7**<br>Strings: "0
 If you first know that the input values are limited to a subset of all possible bytes, e.g. alphanumeric strings, printable ascii, digit only... you can use a special table to minimize collisions with that particular input subset. A simple statistical program can be used to generate this table.  
 In most other algorithms, a similar but less effective result can be obtained using a particular seed. Zedmee allows both.  
 
-#### Number of collisions with different tables
+#### 32-bit number of collisions with different tables
 
 File input                   | #Values | #Expected Collisions |Collisions with Default table| Seeds table (genTable())| Collisions 
 :---                         |     ---:|               :---   |                       :---  |    :---           |     :---
