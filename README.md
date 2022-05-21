@@ -87,15 +87,11 @@ Murmur3   |         **5**|Collision: **45 F0 06 CF E1 6F F4 D7**<br>Strings: "07
 Function |  #Collisions | Values
 :---      |      ---:    | :--- 
 Zedmee    |         **0**| &nbsp;
-XXHash    |      -   **5**|Collision: **5E 60 EB 72 92 CC BB 25**<br>Strings:<br>"1110100111100100000100000001100"<br> "101101111010000001011011000110100"
-  XXHash  |        |Collision: **60 5F 66 6F 5A 60 67 99**<br>Strings:<br>"100001010011000010000100100100011"<br>
-"101010101111100111010110000111110"
-  &nbsp;  |     -  |Collision: **8E 7E 33 FF B8 0E 68 85**<br>Strings:<br>"100010101010100101011000000001101"<br>
-"101100110001000111010101100111101"
-  &nbsp;  |     -   |Collision: **FA DC A0 70 68 5E B3 3B**<br>Strings:<br>"100110110000101111100101101101100"<br>
-"111111010100100000001101011001110"
-  &nbsp;  |     -   |Collision: **36 E1 36 72 81 90 A7 B9**<br>Strings:<br>"101010100000000010101000111110000"<br>
-"1000010110110000101010001111011011"
+XXHash    |      -   **5**|Collision: **5E 60 EB 72 92 CC BB 25**<br>Strings: "1110100111100100000100000001100" "101101111010000001011011000110100"
+  XXHash  |        |Collision: **60 5F 66 6F 5A 60 67 99**<br>Strings: "100001010011000010000100100100011" "101010101111100111010110000111110"
+  &nbsp;  |     -  |Collision: **8E 7E 33 FF B8 0E 68 85**<br>Strings: "100010101010100101011000000001101" "101100110001000111010101100111101"
+  &nbsp;  |     -   |Collision: **FA DC A0 70 68 5E B3 3B**<br>Strings: "100110110000101111100101101101100" "111111010100100000001101011001110"
+  &nbsp;  |     -   |Collision: **36 E1 36 72 81 90 A7 B9**<br>Strings: "101010100000000010101000111110000" "1000010110110000101010001111011011"
 
 **Note:** Since murmur3 implements only 32 or 128-bit functions, the first 8 bytes of the 128-bit hash were used to obtain 64-bit hash, as suggested by the author
 
