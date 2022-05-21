@@ -82,6 +82,13 @@ Murmur3   |         **5**| Collision: **45 F0 06 CF E1 6F F4 D7**<br>Strings: "0
  &nbsp;   |     &nbsp;   | Collision: **7E 7B E5 32 95 6E CC C8**<br>Strings: "05652E7A205652E7A205652E7A205652E7A205652E7A2", "179BFA274179BFA274179BFA274179BFA274179BFA274"
  &nbsp;   |     &nbsp;   | Collision: **C3 DC 2E 55 5B F3 82 A0**<br>Strings: "003AA63E8003AA63E8003AA63E8003AA63E8003AA63E8", "1AB1E788D1AB1E788D1AB1E788D1AB1E788D1AB1E788D"
 
+#### 64-bit: number of collisions for data input string from "0000000000000000000000000000000000000000000000000000000000000000" to "0000000000000000000000000000001001010100000010111110001111111111". 10,000,000,000 values
+
+Function |  #Collisions | Values
+:---      |      ---:    | :---
+Zedmee    |         **0**| 
+XXHash    |         **5**| 
+
 **Note:** Since murmur3 implements only 32 or 128-bit functions, the first 8 bytes of the 128-bit hash were used to obtain 64-bit hash, as suggested by the author
 
 
