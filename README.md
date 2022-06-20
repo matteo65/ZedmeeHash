@@ -120,6 +120,8 @@ File random_64bit_signed_numbers.txt|1,000,000|            116|                 
 #### 64-bit: hashing run time of 100,000,000 values length from 1 to 50 bytes
 ![Alt Text](https://raw.githubusercontent.com/matteo65/ZedmeeHash/main/Resource/64-bit_speed.png)
 
+ZedMee is generally slower than the other two algorithms as they group the input bytes into blocks of 4 (or 8) and thus perform fewer operations, but they produce different results for x86 and x64 platforms
+
 ## Vulnerability
 Zedmee, like most non-cryptographic functions, is non-secure because it is not specifically designed to be difficult to reverse by an adversary, making it unsuitable for cryptographic purposes. Its use is instead recommended in all other contexts where hash functions are used.  
 Like other non-cryptographic functions, its security depends on the secrecy of the possibly used seed, but unlike most other algorithms, zedmee allows you to use a 256 length table of 32-bit random values (or 64-bit for zedmee64) which make it much more secure than the others functions.  
@@ -131,11 +133,8 @@ It produces the same result with x86 and x64 platforms.
 Currently C and Java versions are available.  
 
 
-## About comparison functions
-The family of 32/64 bit hash functions is very numerous: SuperFastHash, FNV, djb2, PJW, Murmur
-
-
 ## Conclusion
-Zedmee demonstrates to have a quality of the dispersion of values close to an ideal Universal Hash Function, and shares this quality with Murmur3, while XX has a slightly lower quality as it has a distribution that in some cases differs (positively or negatively) from a random spread.  
-In terms of speed, XX is certainly the best performing, even in the non-parallel version, but zedmee is only slightly lower and certainly faster than all other hash functions of similar quality.  
-Therefore it can be said that zedmee combines maximum distribution performance, speed and simplicity which make it an ideal function for non-cryptographic hashing.  
+Zedmee demonstrates to have an excellet quality of the dispersion, close to an ideal Universal Hash Function.
+It is simple, portable and produces same results in all platform.
+On the other hand it is slightly slower than XX and Murmur3.
+If the goal is the quality of the dispersion and have the same result on different platforms, ZedMee is certainly the algorithm to choose!  
