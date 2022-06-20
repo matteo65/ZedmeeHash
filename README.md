@@ -127,6 +127,7 @@ Like other non-cryptographic functions, its security depends on the secrecy of t
 
 ## Portability
 It is minimalist, elegant, straightforward and can be easily written in virtually any programming language. 
+It produces the same result with x86 and x64 platforms.
 Currently C and Java versions are available.  
 
 
