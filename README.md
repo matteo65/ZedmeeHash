@@ -114,7 +114,7 @@ File random_64bit_signed_numbers.txt|1,000,000|            116|                 
 
 
 ## Speed
-#### 32-bit: hashing run time of 100,000,000 values length from 1 to 30 bytes
+#### 32-bit: hashing run time of 100,000,000 values length from 1 to 50 bytes
 ![Alt Text](https://raw.githubusercontent.com/matteo65/ZedmeeHash/main/Resource/32-bit_speed.png)
 
 Zedmee32 is the fastest with length values up to 12 bytes, then it is slightly slower.  
