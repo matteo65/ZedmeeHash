@@ -38,7 +38,7 @@
 
 #include "zedmeehash64.h"
  
-uint64_t default_table[256];
+uint64_t default_table64[256];
  
 /**
  * Generate the lookup table of 256 uint64_t using the lfsr258 algorithm
@@ -89,6 +89,7 @@ void zmh64create_table(uint64_t table[], uint64_t seed1, uint64_t seed2,
  */
 void zmh64init_table(void)
 {
-	zmh64create_table(default_table, DEFAULT_TABLE_SEED64_1, DEFAULT_TABLE_SEED64_2,
+	zmh64create_table(default_table64, DEFAULT_TABLE_SEED64_1, DEFAULT_TABLE_SEED64_2,
 	                 DEFAULT_TABLE_SEED64_3, DEFAULT_TABLE_SEED64_4, DEFAULT_TABLE_SEED64_5);
 }
+

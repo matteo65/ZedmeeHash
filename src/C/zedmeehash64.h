@@ -8,6 +8,12 @@
 extern "C" {
 #endif
 
+#ifdef __GNUC__
+#define FORCE_INLINE __attribute__((always_inline)) inline
+#else
+#define FORCE_INLINE inline
+#endif
+
 #define DEFAULT_SEED64           0
 
 #define DEFAULT_TABLE_SEED64_1 0x3964D44B4DE22DC3L
@@ -16,7 +22,7 @@ extern "C" {
 #define DEFAULT_TABLE_SEED64_4 0x759712F4EAA664EEL
 #define DEFAULT_TABLE_SEED64_5 0xCA2E28643E732272L
 
-extern uint64_t default_table[];
+extern uint64_t default_table64[];
 
 /**
  * Generate the random table of 256 uint64_t using the lfsr258 algorithm
@@ -37,22 +43,21 @@ void zmh64init_table(void);
  * length <= data.length
  * table a 256 uint64_t array
  **/
-inline uint64_t zedmeehash64(const char *data, int pos, size_t length, uint64_t seed, uint64_t table[]) 
+FORCE_INLINE uint64_t zedmeehash64(const uint8_t *data, size_t length, uint64_t seed, const uint64_t table[]) 
 {
-	data += pos;
 	while(length)
 		seed = table[(--length + data[length]) & 0xFF] ^ ((seed << 2) + seed);
 	return seed;
 }
 
 /**
- * Use the default table
+ * Use the default table, default seed
  **/
-inline uint64_t zedmeehash64def(const char *data, int pos, size_t length, uint64_t seed)
+FORCE_INLINE uint64_t zedmeehash64def(const uint8_t *data, size_t length)
 {
-	data += pos;
+	uint64_t seed = DEFAULT_SEED64;
 	while(length)
-		seed = default_table[(--length + data[length]) & 0xFF] ^ ((seed << 2) + seed);
+		seed = default_table64[(--length + data[length]) & 0xFF] ^ ((seed << 2) + seed);
 	return seed;
 }
 

@@ -8,14 +8,20 @@
 extern "C" {
 #endif
 
-#define DEFAULT_SEED           0
+#ifdef __GNUC__
+#define FORCE_INLINE __attribute__((always_inline)) inline
+#else
+#define FORCE_INLINE inline
+#endif
 
-#define DEFAULT_TABLE_SEED_1   0xB8F09159u
-#define DEFAULT_TABLE_SEED_2   0x69C2A8E9u
-#define DEFAULT_TABLE_SEED_3   0x40B732C7u
-#define DEFAULT_TABLE_SEED_4   0xAE597B8Bu
+#define DEFAULT_SEED32           0
 
-extern uint32_t default_table[];
+#define DEFAULT_TABLE_SEED32_1   0xB8F09159u
+#define DEFAULT_TABLE_SEED32_2   0x69C2A8E9u
+#define DEFAULT_TABLE_SEED32_3   0x40B732C7u
+#define DEFAULT_TABLE_SEED32_4   0xAE597B8Bu
+
+extern uint32_t default_table32[];
 
 /**
  * Generate the random table of 256 uint32_t using the lfsr113 algorithm
@@ -32,26 +38,23 @@ void zmh32init_table(void);
 /**
  * Return zedmee32 hash value
  * data not NULL
- * pos >= 0 && pos < data.length
- * length <= data.length
  * table a 256 uint32_t array
  **/
-inline uint32_t zedmeehash32(const char *data, int pos, size_t length, uint32_t seed, uint32_t table[]) 
+FORCE_INLINE uint32_t zedmeehash32(const uint8_t *data, size_t length, uint32_t seed, const uint32_t table[]) 
 {
-	data += pos;
 	while(length)
 		seed = table[(--length + data[length]) & 0xFF] ^ ((seed << 2) + seed);
 	return seed;
 }
 
 /**
- * Uses the default table
+ * Uses the default table, default seed
  **/
-inline uint32_t zedmeehash32def(const char *data, int pos, size_t length, uint32_t seed)
+FORCE_INLINE uint32_t zedmeehash32def(const uint8_t *data, size_t length)
 {
-	data += pos;
+	uint32_t seed = DEFAULT_SEED32;
 	while(length)
-		seed = default_table[(--length + data[length]) & 0xFF] ^ ((seed << 2) + seed);
+		seed = default_table32[(--length + data[length]) & 0xFF] ^ ((seed << 2) + seed);
 	return seed;
 }
 
