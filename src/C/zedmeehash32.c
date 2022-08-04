@@ -37,7 +37,7 @@
 
 #include "zedmeehash32.h"
 
-uint32_t default_table32[256];
+static uint32_t default_table32[256];
 
 /**
  * Generate the lookup table of 256 uint32_t using the lfsr113 algorithm
@@ -80,6 +80,29 @@ void zmh32init_table(void)
 {
 	zmh32create_table(default_table32, DEFAULT_TABLE_SEED32_1, DEFAULT_TABLE_SEED32_2,
 	                 DEFAULT_TABLE_SEED32_3, DEFAULT_TABLE_SEED32_4);
+}
+
+/**
+ * Return zedmee32 hash value
+ * data not NULL
+ * table a 256 uint32_t array
+ **/
+uint32_t zedmeehash32(const uint8_t *data, size_t length, uint32_t seed, const uint32_t table[]) 
+{
+	while(length)
+		seed = table[(--length + data[length]) & 0xFF] ^ ((seed << 2) + seed);
+	return seed;
+}
+
+/**
+ * Uses the default table, default seed
+ **/
+uint32_t zedmeehash32def(const uint8_t *data, size_t length)
+{
+	uint32_t seed = DEFAULT_SEED32;
+	while(length)
+		seed = default_table32[(--length + data[length]) & 0xFF] ^ ((seed << 2) + seed);
+	return seed;
 }
 
 
