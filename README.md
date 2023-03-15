@@ -54,7 +54,7 @@ File words_en_es_it_latin.txt                      |   315,198   |        11    
 File words_and_numbers.txt                         |   429,187   |        21          |         **14**|             20|     **19**
 File first_million_primes.txt                      |   1,000,000 |       116          |        **101**|            118|     **85**
 File random_64bit_signed_nums.txt                  |   1,000,000 |       116          |        **101**|        **110**|      143
-File [rockyou.txt](https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt) dictionary of unique password|14,442,069|24254|**168230**|168887|168563
+File [rockyou.txt](https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt) dictionary of common passwords|14,442,069|24254|**168230**|168887|168563
 
 #### 32-bit: number of collisions for data input from [19-48] bytes. 100,000,000 values, 1,155,170 expected collisions
 
