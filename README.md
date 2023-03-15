@@ -41,7 +41,7 @@ Data input                                             |  #Values  |#Expected Co
 
 **Note:** both Murmur and XX for arrays up to 4 bytes long (8 for version 64) behave like perfect hash functions (0 collisions), but this feature makes them more vulnerable.  
 
-#### 32-bit: number of collisions for ASCII strings
+#### 32-bit: number of collisions for ASCII / UTF-8 strings
 
 Data input                                         |   #Vaues    |#Expected Collisions|    Zedmee |   Murmur3 |     XX
 :---                                               |         ---:|                ---:|       ---:|       ---:|    ---:
@@ -54,6 +54,7 @@ File words_en_es_it_latin.txt                      |   315,198   |        11    
 File words_and_numbers.txt                         |   429,187   |        21          |         **14**|             20|     **19**
 File first_million_primes.txt                      |   1,000,000 |       116          |        **101**|            118|     **85**
 File random_64bit_signed_nums.txt                  |   1,000,000 |       116          |        **101**|        **110**|      143
+File rockyou.txt                                   |  14,442,069 |     24254          |     **168230**|         168887|     168563
 
 #### 32-bit: number of collisions for data input from [19-48] bytes. 100,000,000 values, 1,155,170 expected collisions
 
