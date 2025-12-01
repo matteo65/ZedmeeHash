@@ -100,12 +100,13 @@ uint32_t zedmeehash32(const void* data, size_t length, uint32_t seed, const uint
  **/
 uint32_t zedmeehash32def(const void* data, size_t length)
 {
-	uint8_t *bytes = (uint8_t*)data;
+	int8_t *bytes = (int8_t*)data;
 	uint32_t seed = DEFAULT_SEED32;
 	while(length)
 		seed = default_table32[(--length + bytes[length]) & 0xFF] ^ ((seed << 2) + seed);
 	return seed;
 }
+
 
 
 
