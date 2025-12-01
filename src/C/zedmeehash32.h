@@ -33,15 +33,16 @@ void zmh32init_table(void);
  * data not NULL
  * table a 256 uint32_t array
  **/
-uint32_t zedmeehash32(const uint8_t *data, size_t length, uint32_t seed, const uint32_t table[]);
+uint32_t zedmeehash32(const void* data, size_t length, uint32_t seed, const uint32_t table[]);
 
 /**
  * Uses the default table, default seed
  **/
-uint32_t zedmeehash32def(const uint8_t *data, size_t length);
+uint32_t zedmeehash32def(const void* data, size_t length);
 
 #ifdef __cplusplus
 }
 #endif
+
 
 #endif
