@@ -35,15 +35,16 @@ void zmh64init_table(void);
  * length <= data.length
  * table a 256 uint64_t array
  **/
-uint64_t zedmeehash64(const uint8_t *data, size_t length, uint64_t seed, const uint64_t table[]);
+uint64_t zedmeehash64(const void* data, size_t length, uint64_t seed, const uint64_t table[]);
 
 /**
  * Use the default table, default seed
  **/
-uint64_t zedmeehash64def(const uint8_t *data, size_t length);
+uint64_t zedmeehash64def(const void* data, size_t length);
 
 #ifdef __cplusplus
 }
 #endif
+
 
 #endif
