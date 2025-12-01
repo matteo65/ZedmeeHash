@@ -102,7 +102,7 @@ void zmh64init_table(void)
  **/
 uint64_t zedmeehash64(const void* data, size_t length, uint64_t seed, const uint64_t table[]) 
 {
-	uint8_t *bytes = (uint8_t*)data;
+	int8_t *bytes = (int8_t*)data;
 	while(length)
 		seed = table[(--length + bytes[length]) & 0xFF] ^ ((seed << 2) + seed);
 	return seed;
@@ -113,11 +113,12 @@ uint64_t zedmeehash64(const void* data, size_t length, uint64_t seed, const uint
  **/
 uint64_t zedmeehash64def(const void* data, size_t length)
 {
-	uint8_t *bytes = (uint8_t*)data;
+	int8_t *bytes = (int8_t*)data;
 	uint64_t seed = DEFAULT_SEED64;
 	while(length)
 		seed = default_table64[(--length + bytes[length]) & 0xFF] ^ ((seed << 2) + seed);
 	return seed;
 }
+
 
 
